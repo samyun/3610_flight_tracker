@@ -1,0 +1,15 @@
+div.center {
+  margin: 0 auto;
+  width: 8em;
+}
+button {
+    	/*Step 2: Basic Button Styles*/
+	display: block;
+	height: 100px;
+	width: 200px;
+	border: 2px solid rgba(33, 68, 72, 0.59);
+  position: 300px;
+  text-align: center;
+}
+
+
