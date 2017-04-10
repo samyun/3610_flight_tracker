@@ -3,12 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using FlightTracker.Models;
+using FlightTracker.Data;
 
 namespace FlightTracker.Controllers
 {
     [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class FlightController : Controller
     {
+        private readonly TrackerContext db;
+        public FlightController(TrackerContext context) 
+        {
+            db = context;
+        }
         // GET api/values
         [HttpGet]
         public IEnumerable<string> Get()

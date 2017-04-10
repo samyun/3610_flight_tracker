@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using FlightTracker.Data;
+//using FlightTracker.Security;
 
 namespace FlightTracker
 {
@@ -28,6 +30,8 @@ namespace FlightTracker
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
+            services.AddDbContext<TrackerContext>();
+            services.AddSingleton<DbSeeder>();
             services.AddMvc();
         }
 
