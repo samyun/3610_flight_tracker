@@ -14,6 +14,8 @@ import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import {TestComponent} from './test/index';
+import {FlightComponent} from './flight/index';
+
 import {NavBarComponent} from './navbar/index';
 
 @NgModule({
@@ -30,6 +32,7 @@ import {NavBarComponent} from './navbar/index';
         LoginComponent,
         TestComponent,
         NavBarComponent,
+        FlightComponent,
         RegisterComponent
 
     ],
