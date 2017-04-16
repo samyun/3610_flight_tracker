@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FlightTracker.Models;
 
 namespace FlightTracker.Data
 {
@@ -30,6 +31,9 @@ namespace FlightTracker.Data
             // Create default Users
             await CreateUsersAsync();
 
+            // Create Test Airports
+            await PopulateAirportsAsync();
+
         }
 
         private async Task CreateUsersAsync()
@@ -54,7 +58,7 @@ namespace FlightTracker.Data
             var user_Admin = new ApplicationUser()
             {
                 UserName = "Admin",
-                Email = "admin@fisherinsurance.com"
+                Email = "admin@flighttracker.com"
             };
 
             await CreateUserAsync(user_Admin, role_Administrators);
@@ -94,6 +98,77 @@ namespace FlightTracker.Data
             {
                 await UserManager.CreateAsync(user, "P@ssw0rd");
                 await UserManager.AddToRoleAsync(user, role);
+            }
+        }
+
+        private async Task PopulateAirportsAsync()
+        {
+            Airport cmh = createCMH();
+            await CreateAirportAsync(cmh, "CMH");
+            Airport clt = createCLT();
+            await CreateAirportAsync(clt, "CLT");
+            Airport stx = createSTX();
+            await CreateAirportAsync(stx, "STX");
+
+        }
+
+        private Airport createCMH()
+        {
+            Airport airport = new Airport("CMH");
+            airport.IATACode = "CMH";
+            airport.City = "Columbus";
+            airport.Address = "4600 International Gateway";
+            airport.Country = "US";
+            airport.Name = "John Glenn Columbus International Airport";
+            airport.PostalCode = "43219";
+            airport.State = "OH";
+            airport.Food.Add(new Item("CMH", "food", "Test CMH Food", "123 Main St Columbus OH 43201", "Test Food at CMH"));
+            airport.Attractions.Add(new Item("CMH", "attractions", "Test CMH Attraction", "234 Main St Columbus OH 43201", "Test Attraction at CMH"));
+            airport.Lounges.Add(new Item("CMH", "lounges", "Test CMH Lounge", "345 Main St Columbus OH 43201", "Test Lounge at CMH"));
+            airport.RentalCars.Add(new Item("CMH", "rental cars", "Test CMH Rental Car", "456 Main St Columbus OH 43201", "Test Rental Car at CMH"));
+
+            return airport;
+        }
+
+        private Airport createCLT()
+        {
+            Airport airport = new Airport("CLT");
+            airport.IATACode = "CLT";
+            airport.City = "Charlotte";
+            airport.Address = "5501 Josh Birmingham Parkway";
+            airport.Country = "US";
+            airport.Name = "Charlotte Douglas International Airport";
+            airport.PostalCode = "28204";
+            airport.State = "NC";
+            airport.Food.Add(new Item("CLT", "food", "Test CLT Food", "123 Main St Charlotte NC 28204", "Test Food at CLT"));
+            airport.Attractions.Add(new Item("CLT", "attractions", "Test CLT Attraction", "234 Main St Charlotte NC 28204", "Test Attraction at CLT"));
+            airport.Lounges.Add(new Item("CLT", "lounges", "Test CLT Lounge", "345 Main St Charlotte NC 28204", "Test Lounge at CLT"));
+            airport.RentalCars.Add(new Item("CLT", "rental cars", "Test CLT Rental Car", "456 Main St Charlotte NC 28204", "Test Rental Car at CLT"));
+
+            return airport;
+        }
+
+        private Airport createSTX()
+        {
+            Airport airport = new Airport("STX");
+            airport.IATACode = "STX";
+            airport.City = "Saint Croix";
+            airport.Country = "VI";
+            airport.Name = "Henry E. Rohlsen Airport";
+            airport.Food.Add(new Item("STX", "food", "Test STX Food", "123 Main St Saint Croix", "Test Food at STX"));
+            airport.Attractions.Add(new Item("STX", "attractions", "Test STX Attraction", "234 Main St Saint Croix", "Test Attraction at STX"));
+            airport.Lounges.Add(new Item("STX", "lounges", "Test STX Lounge", "345 Main St Saint Croix", "Test Lounge at STX"));
+            airport.RentalCars.Add(new Item("STX", "rental cars", "Test STX Rental Car", "456 Main St Saint Croix", "Test Rental Car at STX"));
+
+            return airport;
+        }
+
+        private async Task CreateAirportAsync(Airport airport, string airportId)
+        {
+            if (await db.Airports.FindAsync(airportId) == null)
+            {
+                await db.Airports.AddAsync(airport);
+                await db.SaveChangesAsync();
             }
         }
     }

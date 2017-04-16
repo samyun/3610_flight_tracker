@@ -6,7 +6,6 @@ namespace FlightTracker.Data{
     public class TrackerContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Airport> Airports { get; set; }
-        public DbSet<Category> Categories { get; set; }
         public DbSet<Flight> Flights { get; set; }
         public DbSet<Item> Items { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
