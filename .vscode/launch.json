@@ -6,9 +6,9 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceRoot}/backend/FlightTracker/bin/Debug/netcoreapp1.0/FlightTracker.dll",
+            "program": "${workspaceRoot}/bin/Debug/netcoreapp1.0/FlightTracker.dll",
             "args": [],
-            "cwd": "${workspaceRoot}/backend/FlightTracker",
+            "cwd": "${workspaceRoot}",
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart",
             "launchBrowser": {
