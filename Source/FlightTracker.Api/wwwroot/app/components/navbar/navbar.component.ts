@@ -1,19 +1,20 @@
 import { Component } from '@angular/core';
-import { AuthService } from "../../auth.service";
+import { AuthenticationService } from "../_services/index";
 import { Router } from '@angular/router';
 
 @Component({
+    moduleId: module.id,
     selector: 'nav-bar',
-    templateUrl: './app/components/navbar/navbar.component.html',
-    styleUrls: ['./app/components/navbar/navbar.component.css']
+    templateUrl: 'navbar.component.html',
+    styleUrls: ['navbar.component.css']
 })
 export class NavBarComponent {
-    constructor(public router: Router, public authService: AuthService) { }
-
-    isActive(data: any[]): boolean { 
-        return this.router.isActive(this.router.createUrlTree(data), true); 
+    constructor(public router: Router, public authService: AuthenticationService) { }
+    isActive(data: any[]): boolean {
+        return this.router.isActive(
+            this.router.createUrlTree(data),
+            true);
     }
-    
     logout(): boolean {
         // logs out the user, then redirects him to Welcome View.
         if (this.authService.logout()) {

@@ -1,46 +1,41 @@
-import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router'; 
-import { AuthService } from '../../auth.service';
+﻿import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AlertService, AuthenticationService } from '../_services/index';
 
 @Component({
-    selector: 'login',
-    templateUrl: './app/components/login/login.component.html',
-    styleUrls: ['./app/components/login/login.component.css']
+    moduleId: module.id,
+    templateUrl: 'login.component.html'
 })
 
-export class LoginComponent {
-    title = "Login";
-    loginForm = null;
-    loginError = false;
+export class LoginComponent implements OnInit {
+    model: any = {};
+    loading = false;
+    returnUrl: string;
+
     constructor(
-        private fb: FormBuilder,
+        private route: ActivatedRoute,
         private router: Router,
-        private authService: AuthService) {
-        if (this.authService.isLoggedIn()) {
-            this.router.navigate([""]);
-        }
-        this.loginForm = fb.group({
-            username: ["", Validators.required],
-            password: ["", Validators.required]
-        });
+        private authenticationService: AuthenticationService,
+        private alertService: AlertService) { }
+
+    ngOnInit() {
+        // reset login status
+        this.authenticationService.logout();
+
+        // get return url from route parameters or default to '/'
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
     }
-    performLogin(e) {
-        e.preventDefault();
-        var username = this.loginForm.value.username;
-        var password = this.loginForm.value.password;
-        this.authService.login(username, password)
-            .subscribe((data) => {
-                // login successful
-                this.loginError = false;
-                var auth = this.authService.getAuth();
-                alert("Our Token is: " + auth.access_token);
-                this.router.navigate([""]);
-            },
-            (err) => {
-                console.log(err);
-                // login failure
-                this.loginError = true;
-            });
+
+    login() {
+        this.loading = true;
+        this.authenticationService.login(this.model.username, this.model.password)
+            .subscribe(
+                data => {
+                    this.router.navigate([this.returnUrl]);
+                },
+                error => {
+                    this.alertService.error(error._body);
+                    this.loading = false;
+                });
     }
 }

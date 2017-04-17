@@ -1,45 +1,49 @@
-import { NgModule } from '@angular/core';
+﻿import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AuthService } from "./auth.service";
-import { AuthHttp } from "./auth.http";
-import 'rxjs/Rx';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
-import { NavBarComponent } from './components/navbar/navbar.component';
-import { LoginComponent } from './components/login/login.component';
-import { ClaimsComponent } from './components/claims/claims.component';
-import { QuotesComponent } from './components/quotes/quotes.component';
+import { routing } from './app.routing';
+import { AppConfig } from './app.config';
 
-import { AppRouting } from './app.routing';
+import { AlertComponent } from './components/_directives/index';
+import { AuthGuard } from './components/_guards/index';
+import { AlertService, AuthenticationService, UserService } from './components/_services/index';
+import { HomeComponent } from './components/home/index';
+import { LoginComponent } from './components/login/index';
+import { RegisterComponent } from './components/register/index';
+import {TestComponent} from './components/test/index';
+import {FlightComponent} from './components/flight/index';
 
+import {NavBarComponent} from './components/navbar/index';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        HomeComponent,
-        NavBarComponent,
-        LoginComponent,
-        ClaimsComponent,
-        QuotesComponent
-    ],
     imports: [
         BrowserModule,
-        HttpModule,
         FormsModule,
-        ReactiveFormsModule,
-        RouterModule,
-        AppRouting 
+        HttpModule,
+        routing
+    ],
+    declarations: [
+        AppComponent,
+        AlertComponent,
+        HomeComponent,
+        LoginComponent,
+        TestComponent,
+        NavBarComponent,
+        FlightComponent,
+        RegisterComponent
+
     ],
     providers: [
-        AuthService,
-        AuthHttp
+        AppConfig,
+        AuthGuard,
+        AlertService,
+        AuthenticationService,
+        UserService
     ],
-    bootstrap: [
-        AppComponent
-    ],
+    bootstrap: [AppComponent]
 })
+
 export class AppModule { }
