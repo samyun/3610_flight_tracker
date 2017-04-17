@@ -1,4 +1,4 @@
-<div class='container-fluid'>
+<!--<div class='container-fluid'>
     <div class='row'>
       
             <div class="center">
@@ -22,12 +22,57 @@
                     <button type="button" class="center">Login </button>
                 </a>
 
+            </div>-->
 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
 
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Company Name - Home</title>
+    <link href="test.component.css" rel="stylesheet" type="text/css" />
+</head>
 
+<body>
+    <div id="container">
+        <div id="header">
+            <h1>Flight-Tracker</h1>
+        </div>
+        <div id="middle">
+            <div id="focus">
+                <div id="navigation">
+                    <h3>Navigation</h3>
+                    <ul>
+                        <li><a href="#" class="active">Home</a></li>
 
+                        <li><a [routerLink]="['/flight']" href="#">Flight</a></li>
 
+                        <li><a [routerLink]="['/airport/']" herf="#">Airport</a></li>
 
+                        <li><a class="login" [routerLink]="['/login']" herf="#">Login</a></li>
 
+                    </ul>
+                </div>
             </div>
-        
+            <div id="content">
+                <div class="row">
+                    <div class="onequartercolumn">
+                        <h3>Client Spotlight</h3>
+                        <p>......</p>
+                    </div>
+                    <div class="threequartercolumn gray">
+                        <h3>Learning Is Important</h3>
+                        <img src="/app/components/test/images/34007.jpg" width="150" height="105" alt="Business Image" class="right" />
+                        <p>......</p>
+                    </div>
+                </div>
+                <p class="top"><a href="#">Return to Top</a></p>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <p>Copyright &copy; 2017 <a href="#">Flight-Tracker</a> | Design by: <a href="#">Flight-Tracker</a></p>
+    </div>
+</body>
+
+</html>

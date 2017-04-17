@@ -1,4 +1,4 @@
-div.center {
+/*div.center {
   margin: 0 auto;
   width: 8em;
 }
@@ -10,6 +10,484 @@ button {
 	border: 2px solid rgba(33, 68, 72, 0.59);
   position: 300px;
   text-align: center;
+}*/
+
+
+
+/* CSS Page */
+
+
+* {
+
+margin:0;
+
+padding:0
+
 }
 
 
+
+body {
+
+background:#262424;
+
+height:100%;
+
+text-align:center
+
+}
+
+
+
+#container {
+
+margin:0 auto;
+
+min-height:100%;
+
+position:relative;
+
+text-align:left;
+
+width:730px
+
+}
+
+
+
+#header h1 {
+
+color:#445971;
+
+font-family:Arial, Helvetica, sans-serif;
+
+font-size:36px;
+
+padding:10px 0 0;
+
+text-transform:uppercase
+
+}
+
+
+
+#header h2 {
+
+color:#fff;
+
+font-family:Arial, Helvetica, sans-serif;
+
+font-size:12px;
+
+font-style:italic;
+
+margin:-13px 0 0 13px;
+
+padding-bottom:30px
+
+}
+
+
+
+#focus {
+
+background:url(/app/components/test/images/man.jpg) center center no-repeat #50647B;
+
+height:240px;
+
+overflow:hidden;
+
+width:730px
+
+}
+
+
+
+#navigation {
+
+background:url(/app/components/test/images/left.gif) no-repeat top left #50647B;
+
+float:left;
+
+height:240px
+
+}
+
+
+
+#navigation h3 {
+
+display:none
+
+}
+
+
+
+#navigation ul {
+
+color:#FFF;
+
+font-family:Arial, Helvetica, sans-serif;
+
+list-style-type:none;
+
+margin:20px auto auto 20px;
+
+text-transform:uppercase
+
+}
+
+
+
+#navigation ul li {
+
+overflow:hidden;
+
+width:150px
+
+}
+
+
+
+#navigation a {
+
+border-bottom:1px solid #7E9CC1;
+
+color:#FFF;
+
+display:block;
+
+font-size:14px;
+
+padding:10px 0 10px 8px;
+
+text-decoration:none;
+
+width:150px
+
+}
+
+
+
+#navigation a:hover {
+
+padding:10px 0 10px 20px
+
+}
+
+
+
+#navigation a.active,#navigation a.active:hover {
+
+border-bottom:3px solid #7E9CC1;
+
+cursor:default;
+
+font-weight:700;
+
+padding:10px 0 10px 8px
+
+}
+
+
+#middle {
+
+padding:0 0 60px
+
+}
+
+
+
+/*  Content Elements  */
+
+#content {
+
+background:url(/app/components/test/images/top.gif) top center no-repeat #fff;
+
+margin:10px 0 0
+
+}
+
+
+
+
+
+#content hr {
+
+clear:both;
+
+visibility:hidden
+
+}
+
+
+
+#content p.top {
+
+background:url(/app/components/test/images/bottom.gif) bottom center no-repeat;
+
+margin:0;
+
+padding:30px 0 0;
+
+text-align:right
+
+}
+
+
+
+#content p.top a {
+
+background:url(/app/components/test/images/arrow_up.gif) center left no-repeat;
+
+margin:0 30px;
+
+padding:0 0 0 15px
+
+}
+
+
+
+#content h3 {
+
+border-bottom:1px solid #7E9CC1;
+
+color:#445971;
+
+font-family:"Times New Roman", Times, serif;
+
+font-size:18px;
+
+font-style:italic;
+
+margin:5px 10px
+
+}
+
+
+
+#content p {
+
+margin:3px 15px 10px;
+
+text-align:left
+
+}
+
+
+
+#content h4 {
+
+font-size:11px;
+
+line-height:15px;
+
+margin:2px 10px
+
+}
+
+
+
+#content .date {
+
+background:url(/app/components/test/images/date.gif) center left no-repeat #FFF;
+
+color:#445971;
+
+padding:0 0 0 20px
+
+}
+
+
+
+#content a {
+
+color:#7E9CC1;
+
+text-decoration:none
+
+}
+
+
+
+#content img {
+
+border:1px solid #7E9CC1;
+
+margin:5px 15px
+
+}
+
+
+
+html,* html #container {
+
+height:100%
+
+}
+
+
+
+/*  Footer  */
+
+* html #footer {
+
+margin-top:-50px
+
+}
+
+
+
+#footer {
+
+background:url(/app/components/test/images/footer.gif) top center no-repeat #7e9CC1;
+
+height:50px;
+
+margin:-50px auto 0;
+
+position:relative;
+
+text-align:center;
+
+width:730px
+
+}
+
+
+
+#footer a:hover,#content a:hover {
+
+text-decoration:underline
+
+}
+
+
+
+#footer p {
+
+color:#fff;
+
+font-family:Geneva, Arial, Helvetica, sans-serif;
+
+font-size:10px;
+
+padding:15px 0 0
+
+}
+
+
+
+#footer a {
+
+color:#fff;
+
+text-decoration:none
+
+}
+
+
+
+/*  Classes  */
+
+.left {
+
+float:left
+
+}
+
+
+
+.right {
+
+float:right
+
+}
+
+
+
+.gray {
+
+background-color:#F2F3F4
+
+}
+
+
+
+
+
+/*  Content Controllers  */
+
+/*  Use this to make a new row of columns  */
+
+#content .row {
+
+margin:5px auto;
+
+overflow:hidden;
+
+width:98%
+
+}
+
+
+
+/*  Combine columns to form a layout  */
+
+.fullcolumn {
+
+float:left;
+
+width:99%
+
+}
+
+
+
+.threequartercolumn {
+
+float:left;
+
+width:73.5%
+
+}
+
+
+
+.halfcolumn {
+
+float:left;
+
+width:49%
+
+}
+
+
+
+.onethirdcolumn {
+
+float:left;
+
+width:33%
+
+}
+
+
+
+.twothirdcolumn {
+
+float:left;
+
+width:65%
+
+}
+
+
+
+.onequartercolumn {
+
+float:left;
+
+width:24.5%
+
+}
