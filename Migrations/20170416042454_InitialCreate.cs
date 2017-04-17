@@ -170,6 +170,7 @@ namespace FlightTracker.Migrations
                     AirportId = table.Column<string>(nullable: true),
                     AirportId1 = table.Column<string>(nullable: true),
                     AirportId2 = table.Column<string>(nullable: true),
+                    AirportId3 = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     Type = table.Column<string>(nullable: true)
@@ -198,6 +199,12 @@ namespace FlightTracker.Migrations
                     table.ForeignKey(
                         name: "FK_Items_Airports_AirportId2",
                         column: x => x.AirportId2,
+                        principalTable: "Airports",
+                        principalColumn: "AirportId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Items_Airports_AirportId3",
+                        column: x => x.AirportId3,
                         principalTable: "Airports",
                         principalColumn: "AirportId",
                         onDelete: ReferentialAction.Restrict);
@@ -288,6 +295,11 @@ namespace FlightTracker.Migrations
                 name: "IX_Items_AirportId2",
                 table: "Items",
                 column: "AirportId2");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Items_AirportId3",
+                table: "Items",
+                column: "AirportId3");
 
             migrationBuilder.CreateIndex(
                 name: "RoleNameIndex",

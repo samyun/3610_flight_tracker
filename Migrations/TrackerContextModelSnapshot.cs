@@ -149,6 +149,8 @@ namespace FlightTracker.Migrations
 
                     b.Property<string>("AirportId2");
 
+                    b.Property<string>("AirportId3");
+
                     b.Property<string>("Description");
 
                     b.Property<string>("Name");
@@ -164,6 +166,8 @@ namespace FlightTracker.Migrations
                     b.HasIndex("AirportId1");
 
                     b.HasIndex("AirportId2");
+
+                    b.HasIndex("AirportId3");
 
                     b.ToTable("Items");
                 });
@@ -293,16 +297,20 @@ namespace FlightTracker.Migrations
                         .HasForeignKey("AirportID");
 
                     b.HasOne("FlightTracker.Models.Airport")
-                        .WithMany("Food")
+                        .WithMany("Drinks")
                         .HasForeignKey("AirportId");
 
                     b.HasOne("FlightTracker.Models.Airport")
-                        .WithMany("Lounges")
+                        .WithMany("Food")
                         .HasForeignKey("AirportId1");
 
                     b.HasOne("FlightTracker.Models.Airport")
-                        .WithMany("RentalCars")
+                        .WithMany("Lounges")
                         .HasForeignKey("AirportId2");
+
+                    b.HasOne("FlightTracker.Models.Airport")
+                        .WithMany("RentalCars")
+                        .HasForeignKey("AirportId3");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>

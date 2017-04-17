@@ -20,8 +20,8 @@ namespace FlightTracker.Controllers
             db = context;
         }
         // GET
-        [HttpGet("{carrier}/{year}/{month}/{day}")]
-        public async Task<IActionResult> Flight(string carrier, int year, int month, int day)
+        [HttpGet("{carrier}/{flight_number}/{year}/{month}/{day}")]
+        public async Task<IActionResult> Flight(string carrier, int flight_number, int year, int month, int day)
         {
             using (var client = new HttpClient())
             {
@@ -34,7 +34,7 @@ namespace FlightTracker.Controllers
                     try
                     {
                         client.BaseAddress = new Uri("https://api.flightstats.com");
-                        var response = await client.GetAsync($"/flex/flightstatus/rest/v2/json/flight/status/{carrier}/dep/{year}/{month}/{day}?appId=0278b7e1&appKey=e50dd1a26feba606205fd19b8c0b187a&utc=false&extendedOptions=useHttpErrors");
+                        var response = await client.GetAsync($"/flex/flightstatus/rest/v2/json/flight/status/{carrier}/{flight_number}/dep/{year}/{month}/{day}?appId=0278b7e1&appKey=e50dd1a26feba606205fd19b8c0b187a&utc=false&extendedOptions=includeDeltas");
                         response.EnsureSuccessStatusCode();
         
                         var stringResult = await response.Content.ReadAsStringAsync();
@@ -73,6 +73,10 @@ namespace FlightTracker.Controllers
 
         private IEnumerable<Flight> parseResponseIntoFlight(FlightStatusResponse response)
         {
+            if (response == null)
+            {
+                return new List<Flight>();
+            }
             // update airports
             foreach (FSAirport airport in response.appendix.airports)
             {

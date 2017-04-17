@@ -33,5 +33,6 @@ namespace FlightTracker.Models
         public ICollection<Item> Lounges { get; set; }
         public ICollection<Item> RentalCars { get; set; }
         public ICollection<Item> Attractions { get; set; }
+        public ICollection<Item> Drinks { get; set; }
     }
 }
