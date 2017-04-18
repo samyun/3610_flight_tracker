@@ -23,7 +23,7 @@ namespace FlightTracker.Controllers
         [HttpGet("{airportId}/")]
         public IActionResult AllItemsAtAirport(string airportId)
         {
-            List<Item> items = db.Items.Where(i => i.AirportID.Equals(airportId)).ToList();
+            List<Item> items = db.Items.Where(i => i.AirportID.Equals(airportId.ToUpper())).ToList();
             if (!items.Any())
             {
                 return BadRequest($"No matching items found.");

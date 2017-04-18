@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using FlightTracker.Data;
 
-namespace FlightTracker.Migrations
+namespace FlightTracker.Api.Migrations
 {
     [DbContext(typeof(TrackerContext))]
-    [Migration("20170416042454_InitialCreate")]
+    [Migration("20170417235435_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -144,31 +144,17 @@ namespace FlightTracker.Migrations
 
                     b.Property<string>("AirportID");
 
-                    b.Property<string>("AirportId");
-
-                    b.Property<string>("AirportId1");
-
-                    b.Property<string>("AirportId2");
-
-                    b.Property<string>("AirportId3");
-
                     b.Property<string>("Description");
 
                     b.Property<string>("Name");
+
+                    b.Property<string>("Phone");
 
                     b.Property<string>("Type");
 
                     b.HasKey("ItemId");
 
                     b.HasIndex("AirportID");
-
-                    b.HasIndex("AirportId");
-
-                    b.HasIndex("AirportId1");
-
-                    b.HasIndex("AirportId2");
-
-                    b.HasIndex("AirportId3");
 
                     b.ToTable("Items");
                 });
@@ -294,24 +280,8 @@ namespace FlightTracker.Migrations
             modelBuilder.Entity("FlightTracker.Models.Item", b =>
                 {
                     b.HasOne("FlightTracker.Models.Airport")
-                        .WithMany("Attractions")
+                        .WithMany("Items")
                         .HasForeignKey("AirportID");
-
-                    b.HasOne("FlightTracker.Models.Airport")
-                        .WithMany("Drinks")
-                        .HasForeignKey("AirportId");
-
-                    b.HasOne("FlightTracker.Models.Airport")
-                        .WithMany("Food")
-                        .HasForeignKey("AirportId1");
-
-                    b.HasOne("FlightTracker.Models.Airport")
-                        .WithMany("Lounges")
-                        .HasForeignKey("AirportId2");
-
-                    b.HasOne("FlightTracker.Models.Airport")
-                        .WithMany("RentalCars")
-                        .HasForeignKey("AirportId3");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>

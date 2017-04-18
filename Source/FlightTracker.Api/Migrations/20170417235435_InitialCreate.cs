@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace FlightTracker.Migrations
+namespace FlightTracker.Api.Migrations
 {
     public partial class InitialCreate : Migration
     {
@@ -167,12 +167,9 @@ namespace FlightTracker.Migrations
                     ItemId = table.Column<string>(nullable: false),
                     Address = table.Column<string>(nullable: true),
                     AirportID = table.Column<string>(nullable: true),
-                    AirportId = table.Column<string>(nullable: true),
-                    AirportId1 = table.Column<string>(nullable: true),
-                    AirportId2 = table.Column<string>(nullable: true),
-                    AirportId3 = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
+                    Phone = table.Column<string>(nullable: true),
                     Type = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -181,30 +178,6 @@ namespace FlightTracker.Migrations
                     table.ForeignKey(
                         name: "FK_Items_Airports_AirportID",
                         column: x => x.AirportID,
-                        principalTable: "Airports",
-                        principalColumn: "AirportId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Items_Airports_AirportId",
-                        column: x => x.AirportId,
-                        principalTable: "Airports",
-                        principalColumn: "AirportId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Items_Airports_AirportId1",
-                        column: x => x.AirportId1,
-                        principalTable: "Airports",
-                        principalColumn: "AirportId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Items_Airports_AirportId2",
-                        column: x => x.AirportId2,
-                        principalTable: "Airports",
-                        principalColumn: "AirportId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Items_Airports_AirportId3",
-                        column: x => x.AirportId3,
                         principalTable: "Airports",
                         principalColumn: "AirportId",
                         onDelete: ReferentialAction.Restrict);
@@ -280,26 +253,6 @@ namespace FlightTracker.Migrations
                 name: "IX_Items_AirportID",
                 table: "Items",
                 column: "AirportID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Items_AirportId",
-                table: "Items",
-                column: "AirportId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Items_AirportId1",
-                table: "Items",
-                column: "AirportId1");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Items_AirportId2",
-                table: "Items",
-                column: "AirportId2");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Items_AirportId3",
-                table: "Items",
-                column: "AirportId3");
 
             migrationBuilder.CreateIndex(
                 name: "RoleNameIndex",

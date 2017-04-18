@@ -34,7 +34,7 @@ namespace FlightTracker.Controllers
                     try
                     {
                         client.BaseAddress = new Uri("https://api.flightstats.com");
-                        var response = await client.GetAsync($"/flex/flightstatus/rest/v2/json/flight/status/{carrier}/{flight_number}/dep/{year}/{month}/{day}?appId=0278b7e1&appKey=e50dd1a26feba606205fd19b8c0b187a&utc=false&extendedOptions=includeDeltas");
+                        var response = await client.GetAsync($"/flex/flightstatus/rest/v2/json/flight/status/{carrier}/{flight_number}/dep/{year}/{month}/{day}?appId=0278b7e1&appKey=e50dd1a26feba606205fd19b8c0b187a&utc=false");
                         response.EnsureSuccessStatusCode();
         
                         var stringResult = await response.Content.ReadAsStringAsync();
@@ -73,7 +73,7 @@ namespace FlightTracker.Controllers
 
         private IEnumerable<Flight> parseResponseIntoFlight(FlightStatusResponse response)
         {
-            if (response == null)
+            if (response == null || response.appendix == null || response.appendix.airports == null)
             {
                 return new List<Flight>();
             }
