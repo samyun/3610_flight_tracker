@@ -19,9 +19,72 @@ namespace FlightTracker.Controllers
         {
             db = context;
         }
-        // GET
+        // GET        
+        [HttpGet("{carrier}/{flight_number}/{year}/{month}/{day}/{departure_airport}")]
+        public async Task<IActionResult> FlightByDeparture(string carrier, int flight_number, int year, int month, int day, string departure_airport)
+        {
+            using (var client = new HttpClient())
+            {
+                DateTime date = new DateTime(year, month, day);
+                IEnumerable<Flight> matchedFlights = db.Flights
+                        .Where(a => a.Carrier.Equals(carrier) && a.ScheduledDepartureDate.Date == date.Date && a.DepartureAirport.Equals(departure_airport.ToUpper())).AsEnumerable();
+                
+                if (!matchedFlights.Any() || matchedFlights.All(updated => updated.LastUpdated.CompareTo(DateTime.Now.AddSeconds(-30)) <= 0))
+                {
+                    try
+                    {
+                        client.BaseAddress = new Uri("https://api.flightstats.com");
+                        var response = await client.GetAsync($"/flex/flightstatus/rest/v2/json/flight/status/{carrier}/{flight_number}/dep/{year}/{month}/{day}?appId=0278b7e1&appKey=e50dd1a26feba606205fd19b8c0b187a&utc=false");
+                        response.EnsureSuccessStatusCode();
+        
+                        var stringResult = await response.Content.ReadAsStringAsync();
+                        var rawStatus = JsonConvert.DeserializeObject<FlightStatusResponse>(stringResult);
+                        IEnumerable<Flight> flights = parseResponseIntoFlight(rawStatus);
+                        
+                        // add flights to db
+                        foreach (Flight f in flights)
+                        {
+                            var dbFlight = db.Flights.Find(f.FlightId);
+                            if (dbFlight == null)
+                            {
+                                db.Flights.Add(f);
+                            }
+                            else
+                            {
+                                dbFlight = f;
+                                db.Flights.Update(dbFlight);
+                            }
+                            db.SaveChanges();
+
+                            // if matching departure airport, add to matchedFlights
+                            if (f.DepartureAirport.Equals(departure_airport.ToUpper()))
+                            {
+                                matchedFlights.Append(f);
+                            }
+                        }
+                    }
+                    catch (HttpRequestException httpRequestException)
+                    {
+                        return BadRequest($"Error getting flight status from FlightStats: {httpRequestException.Message}");
+                    }
+                }
+
+                if (!matchedFlights.Any())
+                {
+                    return BadRequest($"No matching flights found.");
+                }
+                else if (matchedFlights.Count() != 1)
+                {
+                    return BadRequest($"Multiple flights matching that departure airport.");
+                }
+
+                return Ok(matchedFlights.First());
+            }
+        }
+
+
         [HttpGet("{carrier}/{flight_number}/{year}/{month}/{day}")]
-        public async Task<IActionResult> Flight(string carrier, int flight_number, int year, int month, int day)
+        public async Task<IActionResult> AllFlights(string carrier, int flight_number, int year, int month, int day)
         {
             using (var client = new HttpClient())
             {
