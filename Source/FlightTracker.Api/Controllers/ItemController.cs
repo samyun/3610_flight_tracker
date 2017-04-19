@@ -51,7 +51,7 @@ namespace FlightTracker.Controllers
         [HttpGet("lounges/")]
         public IActionResult AllLoungeItems()
         {
-            List<Item> items = db.Items.Where(i => i.Type.Equals("lounge")).ToList();
+            List<Item> items = db.Items.Where(i => i.Type.Equals("lounges")).ToList();
             if (!items.Any())
             {
                 return BadRequest($"No matching lounge items found.");
@@ -65,7 +65,7 @@ namespace FlightTracker.Controllers
         [HttpGet("rentalcars/")]
         public IActionResult AllRentalCarItems()
         {
-            List<Item> items = db.Items.Where(i => i.Type.Equals("rental car")).ToList();
+            List<Item> items = db.Items.Where(i => i.Type.Equals("rental cars")).ToList();
             if (!items.Any())
             {
                 return BadRequest($"No matching rental car items found.");
@@ -79,7 +79,7 @@ namespace FlightTracker.Controllers
         [HttpGet("attractions/")]
         public IActionResult AllAttractionItems()
         {
-            List<Item> items = db.Items.Where(i => i.Type.Equals("attraction")).ToList();
+            List<Item> items = db.Items.Where(i => i.Type.Equals("attractions")).ToList();
             if (!items.Any())
             {
                 return BadRequest($"No matching attraction items found.");

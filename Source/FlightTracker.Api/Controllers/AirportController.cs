@@ -92,7 +92,7 @@ namespace FlightTracker.Controllers
                 List<Item> allItems = db.Items.ToList();
                 if (allItems.Any())
                 {
-                    airport.Items = allItems.Where(i => i.AirportID.Equals(airport.AirportId)).Where(i => i.Type.Equals("rental car")).ToList();
+                    airport.Items = allItems.Where(i => i.AirportID.Equals(airport.AirportId)).Where(i => i.Type.Equals("rental cars")).ToList();
                 }
                 return Ok(airport);
             }
@@ -111,7 +111,7 @@ namespace FlightTracker.Controllers
                 List<Item> allItems = db.Items.ToList();
                 if (allItems.Any())
                 {
-                    airport.Items = allItems.Where(i => i.AirportID.Equals(airport.AirportId)).Where(i => i.Type.Equals("attraction")).ToList();
+                    airport.Items = allItems.Where(i => i.AirportID.Equals(airport.AirportId)).Where(i => i.Type.Equals("attractions")).ToList();
                 }
                 return Ok(airport);
             }
@@ -130,7 +130,7 @@ namespace FlightTracker.Controllers
                 List<Item> allItems = db.Items.ToList();
                 if (allItems.Any())
                 {
-                    airport.Items = allItems.Where(i => i.AirportID.Equals(airport.AirportId)).Where(i => i.Type.Equals("lounge")).ToList();
+                    airport.Items = allItems.Where(i => i.AirportID.Equals(airport.AirportId)).Where(i => i.Type.Equals("lounges")).ToList();
                 }
                 return Ok(airport);
             }
