@@ -122,10 +122,10 @@ namespace FlightTracker.Data
             airport.Name = "John Glenn Columbus International Airport";
             airport.PostalCode = "43219";
             airport.State = "OH";
-            airport.Items.Add(new Item("CMH", "food", "Test CMH Food", "123 Main St Columbus OH 43201", "Test Food at CMH"));
-            airport.Items.Add(new Item("CMH", "attractions", "Test CMH Attraction", "234 Main St Columbus OH 43201", "Test Attraction at CMH"));
-            airport.Items.Add(new Item("CMH", "lounges", "Test CMH Lounge", "345 Main St Columbus OH 43201", "Test Lounge at CMH"));
-            airport.Items.Add(new Item("CMH", "rental cars", "Test CMH Rental Car", "456 Main St Columbus OH 43201", "Test Rental Car at CMH"));
+            airport.Items.Add(new Item("CMH", "food", "Test CMH Food", "123-456-7890", "123 Main St Columbus OH 43201", "Test Food at CMH"));
+            airport.Items.Add(new Item("CMH", "attractions", "Test CMH Attraction", "123-456-7890", "234 Main St Columbus OH 43201", "Test Attraction at CMH"));
+            airport.Items.Add(new Item("CMH", "lounges", "Test CMH Lounge", "123-456-7890", "345 Main St Columbus OH 43201", "Test Lounge at CMH"));
+            airport.Items.Add(new Item("CMH", "rental cars", "Test CMH Rental Car", "123-456-7890", "456 Main St Columbus OH 43201", "Test Rental Car at CMH"));
 
             return airport;
         }
@@ -140,10 +140,10 @@ namespace FlightTracker.Data
             airport.Name = "Charlotte Douglas International Airport";
             airport.PostalCode = "28204";
             airport.State = "NC";
-            airport.Items.Add(new Item("CLT", "food", "Test CLT Food", "123 Main St Charlotte NC 28204", "Test Food at CLT"));
-            airport.Items.Add(new Item("CLT", "attractions", "Test CLT Attraction", "234 Main St Charlotte NC 28204", "Test Attraction at CLT"));
-            airport.Items.Add(new Item("CLT", "lounges", "Test CLT Lounge", "345 Main St Charlotte NC 28204", "Test Lounge at CLT"));
-            airport.Items.Add(new Item("CLT", "rental cars", "Test CLT Rental Car", "456 Main St Charlotte NC 28204", "Test Rental Car at CLT"));
+            airport.Items.Add(new Item("CLT", "food", "Test CLT Food", "123-456-7890", "123 Main St Charlotte NC 28204", "Test Food at CLT"));
+            airport.Items.Add(new Item("CLT", "attractions", "Test CLT Attraction", "123-456-7890", "234 Main St Charlotte NC 28204", "Test Attraction at CLT"));
+            airport.Items.Add(new Item("CLT", "lounges", "Test CLT Lounge", "123-456-7890", "345 Main St Charlotte NC 28204", "Test Lounge at CLT"));
+            airport.Items.Add(new Item("CLT", "rental cars", "Test CLT Rental Car", "123-456-7890", "456 Main St Charlotte NC 28204", "Test Rental Car at CLT"));
 
             return airport;
         }
@@ -155,10 +155,10 @@ namespace FlightTracker.Data
             airport.City = "Saint Croix";
             airport.Country = "VI";
             airport.Name = "Henry E. Rohlsen Airport";
-            airport.Items.Add(new Item("STX", "food", "Test STX Food", "123 Main St Saint Croix", "Test Food at STX"));
-            airport.Items.Add(new Item("STX", "attractions", "Test STX Attraction", "234 Main St Saint Croix", "Test Attraction at STX"));
-            airport.Items.Add(new Item("STX", "lounges", "Test STX Lounge", "345 Main St Saint Croix", "Test Lounge at STX"));
-            airport.Items.Add(new Item("STX", "rental cars", "Test STX Rental Car", "456 Main St Saint Croix", "Test Rental Car at STX"));
+            airport.Items.Add(new Item("STX", "food", "Test STX Food", "123-456-7890", "123 Main St Saint Croix", "Test Food at STX"));
+            airport.Items.Add(new Item("STX", "attractions", "Test STX Attraction", "123-456-7890", "234 Main St Saint Croix", "Test Attraction at STX"));
+            airport.Items.Add(new Item("STX", "lounges", "Test STX Lounge", "123-456-7890", "345 Main St Saint Croix", "Test Lounge at STX"));
+            airport.Items.Add(new Item("STX", "rental cars", "Test STX Rental Car", "123-456-7890", "456 Main St Saint Croix", "Test Rental Car at STX"));
 
             return airport;
         }

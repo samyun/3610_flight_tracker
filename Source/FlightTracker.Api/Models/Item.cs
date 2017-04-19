@@ -8,12 +8,13 @@ namespace FlightTracker.Models
         public Item() {
             ItemId = Guid.NewGuid().ToString();
         }
-        public Item(string airportID, string type, string name, string address, string description)
+        public Item(string airportID, string type, string name, string phone, string address, string description)
         {
             ItemId = Guid.NewGuid().ToString();
             AirportID = airportID;
             Type = type;
             Name = name;
+            Phone = phone;
             Address = address;
             Description = description;
         }
