@@ -7,12 +7,14 @@ var index_3 = require("./components/register/index");
 var index_4 = require("./components/_guards/index");
 var index_5 = require("./components/test/index");
 var index_6 = require("./components/flight/index");
+var index_7 = require("./components/airport/index");
 var appRoutes = [
     { path: 'home', component: index_1.HomeComponent, canActivate: [index_4.AuthGuard] },
     { path: 'login', component: index_2.LoginComponent },
     { path: 'register', component: index_3.RegisterComponent },
     { path: '', component: index_5.TestComponent },
     { path: 'flight', component: index_6.FlightComponent },
+    { path: 'airport', component: index_7.AirportComponent },
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];

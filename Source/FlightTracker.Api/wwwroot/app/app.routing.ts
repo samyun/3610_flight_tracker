@@ -6,6 +6,7 @@ import { RegisterComponent } from './components/register/index';
 import { AuthGuard } from './components/_guards/index';
 import {TestComponent} from './components/test/index';
 import {FlightComponent} from './components/flight/index';
+import {AirportComponent} from './components/airport/index';
 
 
 const appRoutes: Routes = [
@@ -14,6 +15,7 @@ const appRoutes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: '', component: TestComponent },
     { path: 'flight', component: FlightComponent },
+    { path: 'airport', component: AirportComponent },
 
 
 
