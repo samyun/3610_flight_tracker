@@ -21,7 +21,8 @@ var index_5 = require("./components/login/index");
 var index_6 = require("./components/register/index");
 var index_7 = require("./components/test/index");
 var index_8 = require("./components/flight/index");
-var index_9 = require("./components/navbar/index");
+var index_9 = require("./components/airport/index");
+var index_10 = require("./components/navbar/index");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -41,8 +42,9 @@ AppModule = __decorate([
             index_4.HomeComponent,
             index_5.LoginComponent,
             index_7.TestComponent,
-            index_9.NavBarComponent,
+            index_10.NavBarComponent,
             index_8.FlightComponent,
+            index_9.AirportComponent,
             index_6.RegisterComponent
         ],
         providers: [

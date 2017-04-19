@@ -15,6 +15,8 @@ import { LoginComponent } from './components/login/index';
 import { RegisterComponent } from './components/register/index';
 import {TestComponent} from './components/test/index';
 import {FlightComponent} from './components/flight/index';
+import {AirportComponent} from './components/airport/index';
+
 
 import {NavBarComponent} from './components/navbar/index';
 
@@ -33,6 +35,7 @@ import {NavBarComponent} from './components/navbar/index';
         TestComponent,
         NavBarComponent,
         FlightComponent,
+        AirportComponent,
         RegisterComponent
 
     ],
