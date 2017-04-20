@@ -10,16 +10,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
+var index_1 = require("../_services/index");
 var AirportComponent = (function () {
-    function AirportComponent(route, router) {
-        this.route = route;
-        this.router = router;
-        this.model = {};
+    function AirportComponent(_dataService) {
+        this._dataService = _dataService;
     }
-    AirportComponent.prototype.airportSearch = function () {
-        this.model.airport;
-        this.router.navigate([this.returnUrl]);
+    AirportComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this._dataService
+            .GetAll()
+            .subscribe(function (data) { return _this.values = data; }, function (error) { return console.log(error); }, function () { return console.log('Get all complete'); });
     };
     return AirportComponent;
 }());
@@ -27,10 +27,10 @@ AirportComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
         selector: 'airport',
-        templateUrl: './airport.component.html'
+        template: "My Values: <ul><li *ngFor=\"let value of values\">\n        <span>{{airportId}} </span>\n      </li></ul>",
+        providers: [index_1.AirportService]
     }),
-    __metadata("design:paramtypes", [router_1.ActivatedRoute,
-        router_1.Router])
+    __metadata("design:paramtypes", [index_1.AirportService])
 ], AirportComponent);
 exports.AirportComponent = AirportComponent;
 //# sourceMappingURL=airport.component.js.map
