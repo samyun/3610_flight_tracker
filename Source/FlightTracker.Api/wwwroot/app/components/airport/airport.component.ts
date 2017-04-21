@@ -9,13 +9,18 @@ import { Http } from '@angular/http';
   templateUrl: 'airport.component.html'
 })
 export class AirportComponent  {
+ 
   public airports: Airport;
-    constructor(http: Http) {
-        http.get('/api/airports/CMH').subscribe(result => {
+      constructor(private http: Http) {
+    }
+ 
+    public getAirport(chosenAirport: string) {
+        this.http.get('/api/airports/' + chosenAirport).subscribe(result => {
             this.airports = result.json();
         });
     }
 }
+
 interface Airport {
    airportId: string;
   iataCode: string;

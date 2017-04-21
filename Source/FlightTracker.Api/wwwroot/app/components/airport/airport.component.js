@@ -13,11 +13,14 @@ var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var AirportComponent = (function () {
     function AirportComponent(http) {
+        this.http = http;
+    }
+    AirportComponent.prototype.getAirport = function (chosenAirport) {
         var _this = this;
-        http.get('/api/airports/CMH').subscribe(function (result) {
+        this.http.get('/api/airports/' + chosenAirport).subscribe(function (result) {
             _this.airports = result.json();
         });
-    }
+    };
     return AirportComponent;
 }());
 AirportComponent = __decorate([
