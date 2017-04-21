@@ -7,7 +7,7 @@
         {
             "taskName": "build",
             "args": [
-                "${workspaceRoot}/backend/FlightTracker/FlightTracker.csproj"
+                "${workspaceRoot}/Source/FlightTracker.Api/FlightTracker.Api.csproj"
             ],
             "isBuildCommand": true,
             "problemMatcher": "$msCompile"

@@ -1,10 +1,10 @@
 {
-    "name": "mean-angular2-registration-login-example-client",
+    "name": "flight-tracker",
     "version": "1.0.0",
-    "description": "Client for MEAN Stack with Angular 2 User Registration and Login Example",
+    "description": "Flight tracker",
     "repository": {
         "type": "git",
-        "url": "https://github.com/cornflourblue/mean-angular2-registration-login-example.git"
+        "url": "https://github.com/samyun/3610_flight_tracker.git"
     },
     "scripts": {
         "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
@@ -31,7 +31,6 @@
     },
     "devDependencies": {
         "concurrently": "^3.1.0",
-        "lite-server": "^2.2.2",
         "typescript": "^2.0.10",
 
         "@types/core-js": "0.9.36",
