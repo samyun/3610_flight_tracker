@@ -1,25 +1,29 @@
 import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
-import { AirportService } from '../_services/index';
 
 @Component({
   moduleId: module.id,
 
   selector: 'airport',
-  template: `My Values: <ul><li *ngFor="let value of values">
-        <span>{{airportId}} </span>
-      </li></ul>`,
-  providers: [AirportService]
+  templateUrl: 'airport.component.html'
 })
-export class AirportComponent implements OnInit {
-  public values: any[];
-  constructor(private _dataService: AirportService) { }
-  ngOnInit() {
-    this._dataService
-      .GetAll()
-      .subscribe(data => this.values = data,
-      error => console.log(error),
-      () => console.log('Get all complete'));
-  }
+export class AirportComponent  {
+  public airports: Airport;
+    constructor(http: Http) {
+        http.get('/api/airports/CMH').subscribe(result => {
+            this.airports = result.json();
+        });
+    }
+}
+interface Airport {
+   airportId: string;
+  iataCode: string;
+  name: string;
+  address: string;
+  city: string;
+  state: string;
+  postalCode: number;
+  country: string;
+  items: string;
 }

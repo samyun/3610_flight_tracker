@@ -10,27 +10,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var index_1 = require("../_services/index");
+var http_1 = require("@angular/http");
 var AirportComponent = (function () {
-    function AirportComponent(_dataService) {
-        this._dataService = _dataService;
-    }
-    AirportComponent.prototype.ngOnInit = function () {
+    function AirportComponent(http) {
         var _this = this;
-        this._dataService
-            .GetAll()
-            .subscribe(function (data) { return _this.values = data; }, function (error) { return console.log(error); }, function () { return console.log('Get all complete'); });
-    };
+        http.get('/api/airports/CMH').subscribe(function (result) {
+            _this.airports = result.json();
+        });
+    }
     return AirportComponent;
 }());
 AirportComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
         selector: 'airport',
-        template: "My Values: <ul><li *ngFor=\"let value of values\">\n        <span>{{airportId}} </span>\n      </li></ul>",
-        providers: [index_1.AirportService]
+        templateUrl: 'airport.component.html'
     }),
-    __metadata("design:paramtypes", [index_1.AirportService])
+    __metadata("design:paramtypes", [http_1.Http])
 ], AirportComponent);
 exports.AirportComponent = AirportComponent;
 //# sourceMappingURL=airport.component.js.map
