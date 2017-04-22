@@ -17,6 +17,9 @@ var TestComponent = (function () {
         this.router = router;
         this.authService = authService;
     }
+    TestComponent.prototype.isActive = function (data) {
+        return this.router.isActive(this.router.createUrlTree(data), true);
+    };
     TestComponent.prototype.logout = function () {
         // logs out the user, then redirects him to Welcome View.
         if (this.authService.logout()) {

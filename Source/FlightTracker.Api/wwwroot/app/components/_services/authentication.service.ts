@@ -14,11 +14,42 @@ export class AuthenticationService {
     constructor(private http: AuthHttp, private config: AppConfig) { 
     } 
  
-    login(username: string, password: string): any { 
+    login(email: string, password: string): any { 
         var url = this.config.apiUrl + '/connect/token';  // JwtProvider's LoginPath 
  
         var data = { 
-            username: username, 
+            email: email, 
+            password: password, 
+            client_id: "FlightTracker", 
+            // required when signing up with username/password 
+            grant_type: "password", 
+            // space-separated list of scopes for which the token is issued 
+            scope: "offline_access profile email" 
+        }; 
+ 
+        return this.http.post( 
+            url, 
+            this.toUrlEncodedString(data), 
+            new RequestOptions({ 
+                headers: new Headers({ 
+                    "Content-Type": "application/x-www-form-urlencoded" 
+                }) 
+            })) 
+            .map(response => { 
+                var auth = response.json(); 
+                console.log("The following auth JSON object has been received:"); 
+                console.log(auth); 
+                this.setAuth(auth); 
+                return auth; 
+            }); 
+    } 
+ 
+    register(name: string, email: string, password: string): any { 
+        var url = this.config.apiUrl + '/connect/token';  // JwtProvider's LoginPath 
+ 
+        var data = { 
+            name: name,
+            email: email, 
             password: password, 
             client_id: "FlightTracker", 
             // required when signing up with username/password 

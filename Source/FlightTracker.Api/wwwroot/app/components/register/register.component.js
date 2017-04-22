@@ -10,26 +10,42 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var forms_1 = require("@angular/forms");
 var router_1 = require("@angular/router");
 var index_1 = require("../_services/index");
 var RegisterComponent = (function () {
-    function RegisterComponent(router, userService, alertService) {
+    function RegisterComponent(fb, router, authService) {
+        this.fb = fb;
         this.router = router;
-        this.userService = userService;
-        this.alertService = alertService;
-        this.model = {};
-        this.loading = false;
+        this.authService = authService;
+        this.title = "Register";
+        this.registrationForm = null;
+        this.registrationError = false;
+        if (this.authService.isLoggedIn()) {
+            this.router.navigate([""]);
+        }
+        this.registrationForm = fb.group({
+            name: ["", forms_1.Validators.required],
+            email: ["", forms_1.Validators.required],
+            password: ["", forms_1.Validators.required]
+        });
     }
-    RegisterComponent.prototype.register = function () {
+    RegisterComponent.prototype.performRegistration = function (e) {
         var _this = this;
-        this.loading = true;
-        this.userService.create(this.model)
+        e.preventDefault();
+        var name = this.registrationForm.value.name;
+        var email = this.registrationForm.value.email;
+        var password = this.registrationForm.value.password;
+        this.authService.register(name, email, password)
             .subscribe(function (data) {
-            _this.alertService.success('Registration successful', true);
-            _this.router.navigate(['/login']);
-        }, function (error) {
-            _this.alertService.error(error._body);
-            _this.loading = false;
+            // registration successful
+            _this.registrationError = false;
+            alert("Registration successful!");
+            _this.router.navigate([""]);
+        }, function (err) {
+            console.log(err);
+            // registration error
+            _this.registrationError = true;
         });
     };
     return RegisterComponent;
@@ -39,9 +55,9 @@ RegisterComponent = __decorate([
         moduleId: module.id,
         templateUrl: 'register.component.html'
     }),
-    __metadata("design:paramtypes", [router_1.Router,
-        index_1.UserService,
-        index_1.AlertService])
+    __metadata("design:paramtypes", [forms_1.FormBuilder,
+        router_1.Router,
+        index_1.AuthenticationService])
 ], RegisterComponent);
 exports.RegisterComponent = RegisterComponent;
 //# sourceMappingURL=register.component.js.map

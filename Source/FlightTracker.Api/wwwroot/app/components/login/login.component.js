@@ -25,21 +25,20 @@ var LoginComponent = (function () {
             this.router.navigate([""]);
         }
         this.loginForm = fb.group({
-            username: ["", forms_1.Validators.required],
+            email: ["", forms_1.Validators.required],
             password: ["", forms_1.Validators.required]
         });
     }
     LoginComponent.prototype.performLogin = function (e) {
         var _this = this;
         e.preventDefault();
-        var username = this.loginForm.value.username;
+        var email = this.loginForm.value.email;
         var password = this.loginForm.value.password;
-        this.authService.login(username, password)
+        this.authService.login(email, password)
             .subscribe(function (data) {
             // login successful
             _this.loginError = false;
-            var auth = _this.authService.getAuth();
-            alert("Our Token is: " + auth.access_token);
+            alert("Logged in!");
             _this.router.navigate([""]);
         }, function (err) {
             console.log(err);

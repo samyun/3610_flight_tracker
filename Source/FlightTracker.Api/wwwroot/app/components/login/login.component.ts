@@ -20,20 +20,19 @@ export class LoginComponent {
             this.router.navigate([""]);
         }
         this.loginForm = fb.group({
-            username: ["", Validators.required],
+            email: ["", Validators.required],
             password: ["", Validators.required]
         });
     }
     performLogin(e) {
         e.preventDefault();
-        var username = this.loginForm.value.username;
+        var email = this.loginForm.value.email;
         var password = this.loginForm.value.password;
-        this.authService.login(username, password)
+        this.authService.login(email, password)
             .subscribe((data) => {
                 // login successful
                 this.loginError = false;
-                var auth = this.authService.getAuth();
-                alert("Our Token is: " + auth.access_token);
+                alert("Logged in!");
                 this.router.navigate([""]);
             },
             (err) => {

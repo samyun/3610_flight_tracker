@@ -73,17 +73,42 @@ namespace FlightTracker.Security
             try
             {
                 //get form POST data
-                string username = httpContext.Request.Form["username"];
+                string email = httpContext.Request.Form["email"];
                 string password = httpContext.Request.Form["password"];
+                ApplicationUser user = null;
 
-                //check username
-                var user = await UserManager.FindByNameAsync(username);
-
-                //if we don't find with username, try email
-                if (user == null && username.Contains("@"))
+                if (!string.IsNullOrEmpty(httpContext.Request.Form["name"]))
                 {
-                    user = await UserManager.FindByEmailAsync(username);
+                    string name = httpContext.Request.Form["name"];
+
+                    //create user
+                    user = new ApplicationUser()
+                    {
+                        UserName = name,
+                        Email = email
+                    };
+                    
+                    if (await UserManager.FindByEmailAsync(email) == null)
+                    {
+                        try
+                        {
+                            await UserManager.CreateAsync(user, password);
+                            await UserManager.AddToRoleAsync(user, "Registered");
+                        }
+                        catch (Exception)
+                        {
+                            await UserManager.DeleteAsync(user);
+                            throw;
+                        }
+                    }
                 }
+                else
+                {
+                    //check email
+                    user = await UserManager.FindByEmailAsync(email);
+                }
+
+                
 
                 var success = user != null && await UserManager.CheckPasswordAsync(user, password);
                 if (success)

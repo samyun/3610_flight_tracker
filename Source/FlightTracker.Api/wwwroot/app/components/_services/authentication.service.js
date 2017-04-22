@@ -20,11 +20,37 @@ var AuthenticationService = (function () {
         this.config = config;
         this.authKey = "auth";
     }
-    AuthenticationService.prototype.login = function (username, password) {
+    AuthenticationService.prototype.login = function (email, password) {
         var _this = this;
         var url = this.config.apiUrl + '/connect/token'; // JwtProvider's LoginPath 
         var data = {
-            username: username,
+            email: email,
+            password: password,
+            client_id: "FlightTracker",
+            // required when signing up with username/password 
+            grant_type: "password",
+            // space-separated list of scopes for which the token is issued 
+            scope: "offline_access profile email"
+        };
+        return this.http.post(url, this.toUrlEncodedString(data), new http_1.RequestOptions({
+            headers: new http_1.Headers({
+                "Content-Type": "application/x-www-form-urlencoded"
+            })
+        }))
+            .map(function (response) {
+            var auth = response.json();
+            console.log("The following auth JSON object has been received:");
+            console.log(auth);
+            _this.setAuth(auth);
+            return auth;
+        });
+    };
+    AuthenticationService.prototype.register = function (name, email, password) {
+        var _this = this;
+        var url = this.config.apiUrl + '/connect/token'; // JwtProvider's LoginPath 
+        var data = {
+            name: name,
+            email: email,
             password: password,
             client_id: "FlightTracker",
             // required when signing up with username/password 

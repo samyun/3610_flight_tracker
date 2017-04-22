@@ -9,7 +9,7 @@ import { AppConfig } from './app.config';
 
 import { AlertComponent } from './components/_directives/index';
 import { AuthGuard } from './components/_guards/index';
-import { AlertService, AuthenticationService, UserService } from './components/_services/index';
+import { AlertService, AuthenticationService } from './components/_services/index';
 import { AuthHttp } from "./auth.http";
 import { HomeComponent } from './components/home/index';
 import { LoginComponent } from './components/login/index';
@@ -46,7 +46,6 @@ import {NavBarComponent} from './components/navbar/index';
         AuthGuard,
         AlertService,
         AuthenticationService,
-        UserService,
         AuthHttp
     ],
     bootstrap: [AppComponent]
