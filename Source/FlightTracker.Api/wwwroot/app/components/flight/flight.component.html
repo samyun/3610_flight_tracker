@@ -18,8 +18,12 @@
   <label for="Day">Day</label>
   <input type="text" id="Day" [(ngModel)]="chosenDay" />
 </div>
+<div>
+  <label for="Departure Airport">Departure Airport</label>
+  <input type="text" id="Departure" [(ngModel)]="Departure" />
+</div>
 
-<input type="button" value="Get Flight" (click)="getFlight(chosenCarrier, chosenNumber, chosenYear, chosenMonth, chosenDay)"
+<input type="button" value="Get Flight" (click)="getFlight(chosenCarrier, chosenNumber, chosenYear, chosenMonth, chosenDay, Departure)"
 />
 <div *ngIf="flights">
   <h1> This will display if ngIf is true and flights is populated </h1>
