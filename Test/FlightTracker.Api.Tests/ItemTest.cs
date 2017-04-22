@@ -4,7 +4,7 @@ using FlightTracker.Models;
 
 namespace FlightTracker.Api.Tests
 {
-    public class UnitTest1
+    public class ItemTest
     {
         [Fact]
         public void Test1()
