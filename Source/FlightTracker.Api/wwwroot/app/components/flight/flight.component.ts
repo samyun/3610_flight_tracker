@@ -19,21 +19,49 @@ export class FlightComponent {
     }
 }
     
-interface Flight {
-  FlightId: Number;
-  LastUpdated: Date;
-  Carrier: string;
-  FlightNumber: string;
-  ScheduledDepartureDate: Date;
-  EstimatedDepartureDate: Date;
-  DepartureAirport: string;
-  ScheduledArrivalDated: Date;
-  EstimatedArrivalDated: Date;
-  ArrivalAirport: string;
-  Status: string;
-  DepartureGate: string;
-  ArrivalGate: string;
-  DepartureTerminal: string;
-  ArrivalTerminal: string;
-  BaggageClaim: string;
-}
+
+
+     interface DepartureAirport {
+        airportId: string;
+        iataCode: string;
+        name: string;
+        address: string;
+        city: string;
+        state: string;
+        postalCode: string;
+        country: string;
+        items: any[];
+    }
+
+     interface ArrivalAirport {
+        airportId: string;
+        iataCode: string;
+        name: string;
+        address: string;
+        city: string;
+        state: string;
+        postalCode: string;
+        country: string;
+        items: any[];
+     }
+
+     interface Flight {
+        flightId: number;
+        lastUpdated: Date;
+        carrier: string;
+        flightNumber: string;
+        scheduledDepartureDate: Date;
+        estimatedDepartureDate: Date;
+        departureAirport: DepartureAirport;
+        scheduledArrivalDate: Date;
+        estimatedArrivalDate: Date;
+        arrivalAirport: ArrivalAirport;
+        status: string;
+        departureGate: string;
+        arrivalGate: string;
+        departureTerminal?: any;
+        arrivalTerminal?: any;
+        baggageClaim: string;
+    }
+
+

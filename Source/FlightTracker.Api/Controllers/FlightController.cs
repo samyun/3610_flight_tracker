@@ -52,7 +52,6 @@ namespace FlightTracker.Controllers
                             else
                             {
                                 dbFlight = f;
-                                db.Flights.Update(dbFlight);
                             }
                             db.SaveChanges();
 
