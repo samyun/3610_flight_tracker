@@ -5,6 +5,9 @@ namespace FlightTracker.Models
 {
     public class Item
     {
+        public string itemID;
+        public string ItemID;
+
         public Item() {
             ItemId = Guid.NewGuid().ToString();
         }

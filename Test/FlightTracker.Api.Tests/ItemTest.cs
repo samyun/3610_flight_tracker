@@ -1,8 +1,7 @@
 using System;
 using Xunit;
-using FlightTracker.Api.Controllers;
-using FlightTracker.Api.Models;
-using FlightTracker.Api.Data;
+using FlightTracker.Models;
+using FlightTracker.Controllers;
 
 namespace FlightTracker.Api.Tests
 {
@@ -11,23 +10,23 @@ namespace FlightTracker.Api.Tests
         [Fact]
         public void Test()
         {
-          var item = new Item 
-          (
-              //Arrange
-              airportId = "CMH",
-              type = "Food",
-              name = "John Glenn International Airport",
-              phone = "123-456-3765",
-              address = "4600 International Gateway, Columbus, OH 43219",
-              description = "Test food for CMH"
-          );
-          
-          //Act
-            var Result = AllItemsAtAirport.get(item);
+            //Arrange
+            var item = new Item
+            {
+                ItemID = "1234",
+                AirportID = "CMH",
+                Type = "Food",
+                Name = "John Glenn Columbus International Airport",
+                Phone = "123-345-1245",
+                Address = "4600 International Gateway, Columbus, OH, 43219",
+                Description = "Test for Food"
+            };
 
-          //Assert
+            //Act
 
-        
+            //Assert
+            
+
         }
     }
 }
