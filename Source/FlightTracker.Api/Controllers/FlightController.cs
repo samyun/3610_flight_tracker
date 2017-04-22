@@ -26,8 +26,8 @@ namespace FlightTracker.Controllers
             using (var client = new HttpClient())
             {
                 DateTime date = new DateTime(year, month, day);
-                IEnumerable<Flight> matchedFlights = db.Flights
-                        .Where(a => a.Carrier.Equals(carrier) && a.ScheduledDepartureDate.Date == date.Date && a.DepartureAirport.Equals(departure_airport.ToUpper())).AsEnumerable();
+                List<Flight> matchedFlights = db.Flights.AsEnumerable()
+                        .Where(a => a.Carrier.Equals(carrier) && a.ScheduledDepartureDate.Date == date.Date && a.DepartureAirport.Equals(departure_airport.ToUpper())).ToList();
                 
                 if (!matchedFlights.Any() || matchedFlights.All(updated => updated.LastUpdated.CompareTo(DateTime.Now.AddSeconds(-30)) <= 0))
                 {
@@ -56,9 +56,9 @@ namespace FlightTracker.Controllers
                             db.SaveChanges();
 
                             // if matching departure airport, add to matchedFlights
-                            if (f.DepartureAirport.Equals(departure_airport.ToUpper()))
+                            if (f.DepartureAirport.AirportId.Equals(departure_airport.ToUpper()))
                             {
-                                matchedFlights.Append(f);
+                                matchedFlights.Add(f);
                             }
                         }
                     }
@@ -88,11 +88,12 @@ namespace FlightTracker.Controllers
             using (var client = new HttpClient())
             {
                 DateTime date = new DateTime(year, month, day);
-                IEnumerable<Flight> matchedFlights = db.Flights
+                IEnumerable<Flight> matchedFlights = db.Flights.AsEnumerable()
                         .Where(a => a.Carrier.Equals(carrier) && a.ScheduledDepartureDate.Date == date.Date).AsEnumerable();
                 
                 if (!matchedFlights.Any() || matchedFlights.All(updated => updated.LastUpdated.CompareTo(DateTime.Now.AddSeconds(-30)) <= 0))
                 {
+                    matchedFlights = new List<Flight>();
                     try
                     {
                         client.BaseAddress = new Uri("https://api.flightstats.com");
