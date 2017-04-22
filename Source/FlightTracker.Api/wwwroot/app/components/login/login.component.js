@@ -10,32 +10,41 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var forms_1 = require("@angular/forms");
 var router_1 = require("@angular/router");
 var index_1 = require("../_services/index");
 var LoginComponent = (function () {
-    function LoginComponent(route, router, authenticationService, alertService) {
-        this.route = route;
+    function LoginComponent(fb, router, authService) {
+        this.fb = fb;
         this.router = router;
-        this.authenticationService = authenticationService;
-        this.alertService = alertService;
-        this.model = {};
-        this.loading = false;
+        this.authService = authService;
+        this.title = "Login";
+        this.loginForm = null;
+        this.loginError = false;
+        if (this.authService.isLoggedIn()) {
+            this.router.navigate([""]);
+        }
+        this.loginForm = fb.group({
+            username: ["", forms_1.Validators.required],
+            password: ["", forms_1.Validators.required]
+        });
     }
-    LoginComponent.prototype.ngOnInit = function () {
-        // reset login status
-        this.authenticationService.logout();
-        // get return url from route parameters or default to '/'
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
-    };
-    LoginComponent.prototype.login = function () {
+    LoginComponent.prototype.performLogin = function (e) {
         var _this = this;
-        this.loading = true;
-        this.authenticationService.login(this.model.username, this.model.password)
+        e.preventDefault();
+        var username = this.loginForm.value.username;
+        var password = this.loginForm.value.password;
+        this.authService.login(username, password)
             .subscribe(function (data) {
-            _this.router.navigate([_this.returnUrl]);
-        }, function (error) {
-            _this.alertService.error(error._body);
-            _this.loading = false;
+            // login successful
+            _this.loginError = false;
+            var auth = _this.authService.getAuth();
+            alert("Our Token is: " + auth.access_token);
+            _this.router.navigate([""]);
+        }, function (err) {
+            console.log(err);
+            // login failure
+            _this.loginError = true;
         });
     };
     return LoginComponent;
@@ -45,10 +54,9 @@ LoginComponent = __decorate([
         moduleId: module.id,
         templateUrl: 'login.component.html'
     }),
-    __metadata("design:paramtypes", [router_1.ActivatedRoute,
+    __metadata("design:paramtypes", [forms_1.FormBuilder,
         router_1.Router,
-        index_1.AuthenticationService,
-        index_1.AlertService])
+        index_1.AuthenticationService])
 ], LoginComponent);
 exports.LoginComponent = LoginComponent;
 //# sourceMappingURL=login.component.js.map

@@ -16,6 +16,7 @@ var app_config_1 = require("./app.config");
 var index_1 = require("./components/_directives/index");
 var index_2 = require("./components/_guards/index");
 var index_3 = require("./components/_services/index");
+var auth_http_1 = require("./auth.http");
 var index_4 = require("./components/home/index");
 var index_5 = require("./components/login/index");
 var index_6 = require("./components/register/index");
@@ -33,6 +34,7 @@ AppModule = __decorate([
         imports: [
             platform_browser_1.BrowserModule,
             forms_1.FormsModule,
+            forms_1.ReactiveFormsModule,
             http_1.HttpModule,
             app_routing_1.routing
         ],
@@ -52,7 +54,8 @@ AppModule = __decorate([
             index_2.AuthGuard,
             index_3.AlertService,
             index_3.AuthenticationService,
-            index_3.UserService
+            index_3.UserService,
+            auth_http_1.AuthHttp
         ],
         bootstrap: [app_component_1.AppComponent]
     })

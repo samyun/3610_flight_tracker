@@ -1,28 +1,27 @@
+<label for="Airport">Airport</label>
 
-
-  <label for="Airport">Airport</label>
 <input type="text" id="airport" [(ngModel)]="chosenAirport" />
 <input type="button" value="Get Airport" (click)="getAirport(chosenAirport)" />
-  <div *ngIf="airports">
-    <h3>{{airports.airportId}}</h3>
-    <h3> {{airports.iataCode}}</h3>
+<div *ngIf="airports">
+  <h3>{{airports.airportId}}</h3>
+  <h3> {{airports.iataCode}}</h3>
   <h3>{{airports.name}}</h3>
   <h3>{{airports.address}}</h3>
   <h3>{{airports.city}}</h3>
   <h3>{{airports.state}}</h3>
   <h3>{{airports.postalCode}}</h3>
- <h3> {{airports.country}}</h3>
+  <h3> {{airports.country}}</h3>
   <h3>{{airports.items}}</h3>
 
-  
-    <h3>{{airports.airportId}}</h3>
-    <h3> {{airports.iataCode}}</h3>
+
+  <h3>{{airports.airportId}}</h3>
+  <h3> {{airports.iataCode}}</h3>
   <h3>{{airports.name}}</h3>
   <h3>{{airports.address}}</h3>
   <h3>{{airports.city}}</h3>
   <h3>{{airports.state}}</h3>
   <h3>{{airports.postalCode}}</h3>
- <h3> {{airports.country}}</h3>
+  <h3> {{airports.country}}</h3>
   <h3>{{airports.items}}</h3>
- 
+
 </div>

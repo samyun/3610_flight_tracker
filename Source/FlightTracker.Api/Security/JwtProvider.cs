@@ -26,7 +26,7 @@ namespace FlightTracker.Security
         private static readonly string PrivateKey = "private_key_1234567890"; //never do this IRL; use something like https://vaultproject.io 
         public static readonly SymmetricSecurityKey SecurityKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(PrivateKey));
 
-        public static readonly string Issuer = "FisherInsurance";
+        public static readonly string Issuer = "FlightTracker";
         public static string TokenEndPoint = "/api/connect/token";
 
         public JwtProvider(RequestDelegate next, TrackerContext db, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
@@ -64,7 +64,7 @@ namespace FlightTracker.Security
             else
             {
                 httpContext.Response.StatusCode = 400;
-                return httpContext.Response.WriteAsync("Bad Request.");
+                return httpContext.Response.WriteAsync("Incorrect Password.");
             }
         }
 

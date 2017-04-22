@@ -1,6 +1,6 @@
 ﻿import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
@@ -10,6 +10,7 @@ import { AppConfig } from './app.config';
 import { AlertComponent } from './components/_directives/index';
 import { AuthGuard } from './components/_guards/index';
 import { AlertService, AuthenticationService, UserService } from './components/_services/index';
+import { AuthHttp } from "./auth.http";
 import { HomeComponent } from './components/home/index';
 import { LoginComponent } from './components/login/index';
 import { RegisterComponent } from './components/register/index';
@@ -24,6 +25,7 @@ import {NavBarComponent} from './components/navbar/index';
     imports: [
         BrowserModule,
         FormsModule,
+        ReactiveFormsModule,
         HttpModule,
         routing
     ],
@@ -44,7 +46,8 @@ import {NavBarComponent} from './components/navbar/index';
         AuthGuard,
         AlertService,
         AuthenticationService,
-        UserService
+        UserService,
+        AuthHttp
     ],
     bootstrap: [AppComponent]
 })

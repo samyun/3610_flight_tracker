@@ -30,5 +30,5 @@ interface Airport {
   state: string;
   postalCode: number;
   country: string;
-  items: string;
+  items: Array<Array<string>>;
 }

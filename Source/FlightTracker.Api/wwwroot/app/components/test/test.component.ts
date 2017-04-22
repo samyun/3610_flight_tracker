@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthenticationService } from '../_services/index';
+import { Router } from '@angular/router';
 
 @Component({
      moduleId: module.id,
@@ -10,4 +12,13 @@ import { Component } from '@angular/core';
 
 })
 export class TestComponent {
+    constructor(public router: Router, public authService: AuthenticationService) { }
+    
+    logout(): boolean {
+        // logs out the user, then redirects him to Welcome View.
+        if (this.authService.logout()) {
+            this.router.navigate([""]);
+        }
+        return false;
+    }
 }
