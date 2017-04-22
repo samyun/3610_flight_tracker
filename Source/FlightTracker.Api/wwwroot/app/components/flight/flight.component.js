@@ -15,9 +15,9 @@ var FlightComponent = (function () {
     function FlightComponent(http) {
         this.http = http;
     }
-    FlightComponent.prototype.getFlight = function (chosenCarrier, chosenNumber, chosenYear, chosenMonth, chosenDay) {
+    FlightComponent.prototype.getFlight = function (chosenCarrier, chosenNumber, chosenYear, chosenMonth, chosenDay, Departure) {
         var _this = this;
-        this.http.get('/api/flights/' + chosenCarrier + '/' + chosenNumber + '/' + chosenYear + '/' + chosenMonth + '/' + chosenDay).subscribe(function (result) {
+        this.http.get('/api/flights/' + chosenCarrier + '/' + chosenNumber + '/' + chosenYear + '/' + chosenMonth + '/' + chosenDay + '/' + Departure).subscribe(function (result) {
             _this.flights = result.json();
         });
     };

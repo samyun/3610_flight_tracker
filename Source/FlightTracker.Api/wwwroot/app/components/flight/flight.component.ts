@@ -12,8 +12,8 @@ export class FlightComponent {
       constructor(private http: Http) {
     }
  
-    public getFlight(chosenCarrier: string, chosenNumber: string, chosenYear: string, chosenMonth: string, chosenDay:string) {
-        this.http.get('/api/flights/'  + chosenCarrier + '/' + chosenNumber + '/' + chosenYear + '/' + chosenMonth + '/' + chosenDay).subscribe(result => {
+    public getFlight(chosenCarrier: string, chosenNumber: string, chosenYear: string, chosenMonth: string, chosenDay:string, Departure: string) {
+        this.http.get('/api/flights/'  + chosenCarrier + '/' + chosenNumber + '/' + chosenYear + '/' + chosenMonth + '/' + chosenDay + '/' + Departure).subscribe(result => {
             this.flights = result.json();
         });
     }
