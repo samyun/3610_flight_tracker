@@ -13,7 +13,6 @@ namespace FlightTracker.Api.Tests
             //Arrange
             var item = new Item
             {
-                ItemID = "1234",
                 AirportID = "CMH",
                 Type = "Food",
                 Name = "John Glenn Columbus International Airport",
