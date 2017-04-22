@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div>
   <label for="Carrier">Carrier</label>
   <input type="text" id="Carrier" [(ngModel)]="chosenCarrier" />
@@ -45,4 +46,63 @@
   <h2> {{flights.baggageClaim }} </h2>
 
 
+=======
+<!--<div>
+  <label for="Carrier">Carrier</label>
+  <input type="text" id="Carrier" [(ngModel)]="chosenCarrier" />
+</div>
+<div>
+  <label for="Flight#">Flight #</label>
+  <input type="text" id="Number" [(ngModel)]="chosenNumber" />
+</div>
+<div>
+  <label for="Year">Year</label>
+  <input type="text" id="Year" [(ngModel)]="chosenYear" />
+</div>
+<div>
+  <label for="Month">Month</label>
+  <input type="text" id="Month" [(ngModel)]="chosenMonth" />
+</div>
+<div>
+  <label for="Day">Day</label>
+  <input type="text" id="Day" [(ngModel)]="chosenDay" />
+</div>
+
+<input type="button" value="Get Flight" (click)="getFlight(chosenCarrier, chosenNumber, chosenYear, chosenMonth, chosenDay)"
+/>
+<div *ngIf="flights">
+  <h3>{{flights.FlightId}}</h3>
+
+</div>-->
+
+
+
+<div class="container">
+  <form id="flight" action="" method="post">
+    <h3>Flight Form</h3>
+    <fieldset>
+      <input placeholder="Carrier" type="text" tabindex="1" [(ngModel)]="chosenCarrier" required>
+    </fieldset>
+    <fieldset>
+      <input placeholder="Flight Number" type="text" tabindex="2" [(ngModel)]="chosenNumber" required>
+    </fieldset>
+    <fieldset>
+      <input placeholder="Year" type="text" tabindex="3" [(ngModel)]="chosenYear" required>
+    </fieldset>
+    <fieldset>
+      <input placeholder="Month" type="text" tabindex="4" [(ngModel)]="chosenMonth" required>
+    </fieldset>
+    <fieldset>
+      <input placeholder="Day" typ="text" tabindex="5" [(ngModel)]="chosenDay" required>
+    </fieldset>
+    <fieldset>
+      <button name="Get Flight" type="submit" id="flight-submit" data-submit="...Sending" (click)="getFlight(chosenCarrier, chosenNumber, chosenYear, chosenMonth, chosenDay)">Get Flight</button>
+    </fieldset>
+
+    <div *ngIf="flights">
+      <h3>{{flights.FlightId}}</h3>
+    </div>
+
+  </form>
+>>>>>>> Damon
 </div>
