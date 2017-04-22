@@ -20,5 +20,6 @@ namespace FlightTracker.Models
         public string DepartureTerminal { get; set; }
         public string ArrivalTerminal { get; set; }
         public string BaggageClaim { get; set; }
+
     }
 }
