@@ -11,7 +11,7 @@ namespace FlightTracker.Api.Tests
         public void Test()
         {
             //Arrange
-            var item1 = new Item
+            var item = new Item
             {
                 AirportID = "CMH",
                 Type = "Food",
@@ -32,10 +32,10 @@ namespace FlightTracker.Api.Tests
             };
 
             //Assert
-            Assert.NotNull(item1);
+            Assert.NotNull(item);
             Assert.NotNull(item2);
-            Assert.Equal(item1, item2);
-            Assert.NotEqual(item1, item2);
+            Assert.Equal(item, item2);
+            Assert.NotEqual(item, item2);
 
         }
     }

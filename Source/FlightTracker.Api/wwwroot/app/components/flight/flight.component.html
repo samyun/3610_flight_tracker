@@ -1,5 +1,4 @@
-
-<!--<div>
+<div>
   <label for="Carrier">Carrier</label>
   <input type="text" id="Carrier" [(ngModel)]="chosenCarrier" />
 </div>
@@ -43,51 +42,5 @@
   <h2> {{flights.arrivalGate }} </h2>
   <h2> {{flights.departureTerminal }} </h2>
   <h2> {{flights.arrivalTerminal }} </h2>
-  <h2> {{flights.baggageClaim }} </h2>-->
-
-
-<div class="container">
-  <form id="flight" action="" method="post">
-    <h3>Flight Form</h3>
-    <fieldset>
-      <input placeholder="Carrier" type="text" tabindex="1" [(ngModel)]="chosenCarrier" required>
-    </fieldset>
-    <fieldset>
-      <input placeholder="Flight Number" type="text" tabindex="2" [(ngModel)]="chosenNumber" required>
-    </fieldset>
-    <fieldset>
-      <input placeholder="Year" type="text" tabindex="3" [(ngModel)]="chosenYear" required>
-    </fieldset>
-    <fieldset>
-      <input placeholder="Month" type="text" tabindex="4" [(ngModel)]="chosenMonth" required>
-    </fieldset>
-    <fieldset>
-      <input placeholder="Day" type="text" tabindex="5" [(ngModel)]="chosenDay" required>
-    </fieldset>
-    <fieldset>
-      <button name="Get Flight" type="submit" id="flight-submit" data-submit="...Sending" (click)="getFlight(chosenCarrier, chosenNumber, chosenYear, chosenMonth, chosenDay)">Get Flight</button>
-    </fieldset>
-
-
-  </form>
+  <h2> {{flights.baggageClaim }} </h2>
 </div>
-
-
-  <!--<div *ngIf="flights">
-    <h1> This will display if ngIf is true and flights is populated </h1>
-    <h2> {{flights.FlightId}} </h2>
-    <h2> {{flights.lastUpdated }} </h2>
-    <h2> {{flights.carrier }} </h2>
-    <h2> {{flights.flightNumber }} </h2>
-    <h2> {{flights.scheduledDepartureDate }} </h2>
-    <h2> {{flights.estimatedDepartureDate }} </h2>
-    <h2> {{flights.departureAirport }} </h2>
-    <h2> {{flights.scheduledArrivalDate }} </h2>
-    <h2> {{flights.estimatedArrivalDate }} </h2>
-    <h2> {{flights.arrivalAirport }} </h2>
-    <h2> {{flights.status }} </h2>
-    <h2> {{flights.departureGate }} </h2>
-    <h2> {{flights.arrivalGate }} </h2>
-    <h2> {{flights.departureTerminal }} </h2>
-    <h2> {{flights.arrivalTerminal }} </h2>
-    <h2> {{flights.baggageClaim }} </h2>-->
