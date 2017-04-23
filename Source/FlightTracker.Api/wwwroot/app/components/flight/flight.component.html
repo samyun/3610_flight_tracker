@@ -1,5 +1,5 @@
-<<<<<<< HEAD
-<div>
+
+<!--<div>
   <label for="Carrier">Carrier</label>
   <input type="text" id="Carrier" [(ngModel)]="chosenCarrier" />
 </div>
@@ -43,38 +43,7 @@
   <h2> {{flights.arrivalGate }} </h2>
   <h2> {{flights.departureTerminal }} </h2>
   <h2> {{flights.arrivalTerminal }} </h2>
-  <h2> {{flights.baggageClaim }} </h2>
-
-
-=======
-<!--<div>
-  <label for="Carrier">Carrier</label>
-  <input type="text" id="Carrier" [(ngModel)]="chosenCarrier" />
-</div>
-<div>
-  <label for="Flight#">Flight #</label>
-  <input type="text" id="Number" [(ngModel)]="chosenNumber" />
-</div>
-<div>
-  <label for="Year">Year</label>
-  <input type="text" id="Year" [(ngModel)]="chosenYear" />
-</div>
-<div>
-  <label for="Month">Month</label>
-  <input type="text" id="Month" [(ngModel)]="chosenMonth" />
-</div>
-<div>
-  <label for="Day">Day</label>
-  <input type="text" id="Day" [(ngModel)]="chosenDay" />
-</div>
-
-<input type="button" value="Get Flight" (click)="getFlight(chosenCarrier, chosenNumber, chosenYear, chosenMonth, chosenDay)"
-/>
-<div *ngIf="flights">
-  <h3>{{flights.FlightId}}</h3>
-
-</div>-->
-
+  <h2> {{flights.baggageClaim }} </h2>-->
 
 
 <div class="container">
@@ -93,16 +62,32 @@
       <input placeholder="Month" type="text" tabindex="4" [(ngModel)]="chosenMonth" required>
     </fieldset>
     <fieldset>
-      <input placeholder="Day" typ="text" tabindex="5" [(ngModel)]="chosenDay" required>
+      <input placeholder="Day" type="text" tabindex="5" [(ngModel)]="chosenDay" required>
     </fieldset>
     <fieldset>
       <button name="Get Flight" type="submit" id="flight-submit" data-submit="...Sending" (click)="getFlight(chosenCarrier, chosenNumber, chosenYear, chosenMonth, chosenDay)">Get Flight</button>
     </fieldset>
 
-    <div *ngIf="flights">
-      <h3>{{flights.FlightId}}</h3>
-    </div>
 
   </form>
->>>>>>> Damon
 </div>
+
+
+  <!--<div *ngIf="flights">
+    <h1> This will display if ngIf is true and flights is populated </h1>
+    <h2> {{flights.FlightId}} </h2>
+    <h2> {{flights.lastUpdated }} </h2>
+    <h2> {{flights.carrier }} </h2>
+    <h2> {{flights.flightNumber }} </h2>
+    <h2> {{flights.scheduledDepartureDate }} </h2>
+    <h2> {{flights.estimatedDepartureDate }} </h2>
+    <h2> {{flights.departureAirport }} </h2>
+    <h2> {{flights.scheduledArrivalDate }} </h2>
+    <h2> {{flights.estimatedArrivalDate }} </h2>
+    <h2> {{flights.arrivalAirport }} </h2>
+    <h2> {{flights.status }} </h2>
+    <h2> {{flights.departureGate }} </h2>
+    <h2> {{flights.arrivalGate }} </h2>
+    <h2> {{flights.departureTerminal }} </h2>
+    <h2> {{flights.arrivalTerminal }} </h2>
+    <h2> {{flights.baggageClaim }} </h2>-->
