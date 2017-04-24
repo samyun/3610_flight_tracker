@@ -1,12 +1,11 @@
 import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http'; 
+import { Http } from '@angular/http';
 @Component({
     moduleId: module.id,
 
     selector: 'flight',
-    templateUrl: 'flight.component.html',
-    styleUrls: ['flight.component.css']
+    templateUrl: 'flight.component.html'
 })
 export class FlightComponent {
     public flights: Flight;
