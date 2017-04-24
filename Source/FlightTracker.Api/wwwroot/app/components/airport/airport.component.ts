@@ -2,7 +2,7 @@ import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { FormControl, FormGroup } from '@angular/forms';
-import {Router} from '@angular/router';
+ 
 
 
 
@@ -13,26 +13,19 @@ import {Router} from '@angular/router';
     templateUrl: 'airport.component.html'
 })
 export class AirportComponent {
-    mySite: string = 'all';
+    mySite: string = "";
     public airports: Airport.RootObject;
     constructor(private http: Http) {
     }
 
     public getAirport(chosenAirport: string, mySite: string) {
-        if (mySite = 'all'){
-            mySite = ''
-        }
+        
         this.http.get('/api/airports/' + chosenAirport + '/' + mySite).subscribe(result => {
             this.airports = result.json();
         });
     }
     
-    public goHere(dest: string){
-          this.http.get('/api/airports/items/item' + dest).subscribe(result => {
-            this.airports = result.json();
-        });
-        
-    }
+    
         
 
   

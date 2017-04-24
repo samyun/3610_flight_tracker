@@ -14,7 +14,7 @@ var http_1 = require("@angular/http");
 var AirportComponent = (function () {
     function AirportComponent(http) {
         this.http = http;
-        this.mySite = 'food';
+        this.mySite = "";
     }
     AirportComponent.prototype.getAirport = function (chosenAirport, mySite) {
         var _this = this;

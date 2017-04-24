@@ -19,6 +19,7 @@ var FlightComponent = (function () {
         var _this = this;
         this.http.get('/api/flights/' + chosenCarrier + '/' + chosenNumber + '/' + chosenYear + '/' + chosenMonth + '/' + chosenDay + '/' + Departure).subscribe(function (result) {
             _this.flights = result.json();
+            _this.flights2 = _this.flights.arrivalAirport;
         });
     };
     return FlightComponent;
