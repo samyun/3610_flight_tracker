@@ -21,7 +21,7 @@ export class FlightComponent {
     
 
 
-     interface DepartureAirport {
+       interface DepartureAirport {
         airportId: string;
         iataCode: string;
         name: string;
@@ -30,22 +30,10 @@ export class FlightComponent {
         state: string;
         postalCode: string;
         country: string;
-        items: any[];
+        items?: any;
     }
 
-     interface ArrivalAirport {
-        airportId: string;
-        iataCode: string;
-        name: string;
-        address: string;
-        city: string;
-        state: string;
-        postalCode: string;
-        country: string;
-        items: any[];
-     }
-
-     interface Flight {
+    interface Flight {
         flightId: number;
         lastUpdated: Date;
         carrier: string;
@@ -53,15 +41,6 @@ export class FlightComponent {
         scheduledDepartureDate: Date;
         estimatedDepartureDate: Date;
         departureAirport: DepartureAirport;
-        scheduledArrivalDate: Date;
-        estimatedArrivalDate: Date;
-        arrivalAirport: ArrivalAirport;
-        status: string;
-        departureGate: string;
-        arrivalGate: string;
-        departureTerminal?: any;
-        arrivalTerminal?: any;
-        baggageClaim: string;
     }
 
 

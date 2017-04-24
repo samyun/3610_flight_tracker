@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   moduleId: module.id,
@@ -9,26 +10,43 @@ import { Http } from '@angular/http';
   templateUrl: 'airport.component.html'
 })
 export class AirportComponent  {
- 
-  public airports: Airport;
+ mySite: string='food';
+  public airports: Airport.RootObject;
       constructor(private http: Http) {
     }
  
-    public getAirport(chosenAirport: string) {
-        this.http.get('/api/airports/' + chosenAirport).subscribe(result => {
+    public getAirport(chosenAirport: string, mySite: string) {
+        this.http.get('/api/airports/' + chosenAirport + '/' + mySite ).subscribe(result => {
             this.airports = result.json();
         });
     }
+    
 }
 
-interface Airport {
-   airportId: string;
-  iataCode: string;
-  name: string;
-  address: string;
-  city: string;
-  state: string;
-  postalCode: number;
-  country: string;
-  items: Array<Array<string>>;
+
+declare module Airport  {
+
+    export interface Item  {
+        itemId: string;
+        airportID: string;
+        type: string;
+        name: string;
+        phone: string;
+        address: string;
+        description: string;
+    }
+
+    export interface RootObject  {
+        airportId: string;
+        iataCode: string;
+        name: string;
+        address: string;
+        city: string;
+        state: string;
+        postalCode: string;
+        country: string;
+        items: Item[];
+    }
+
 }
+

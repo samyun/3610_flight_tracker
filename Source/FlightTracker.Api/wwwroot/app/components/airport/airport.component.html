@@ -1,27 +1,46 @@
 <label for="Airport">Airport</label>
 
 <input type="text" id="airport" [(ngModel)]="chosenAirport" />
-<input type="button" value="Get Airport" (click)="getAirport(chosenAirport)" />
+
+
+<input type="radio" value="food" name="site" [(ngModel)]="mySite" /> Food
+<input type="radio" value="attractions" name="site" [(ngModel)]="mySite" /> Attractions
+<input type="radio" value="lounges" name="site" [(ngModel)]="mySite" /> Lounges
+<input type="radio" value="rentalcars" name="site" [(ngModel)]="mySite" /> Rentals
+
+
+
+<input type="button" value="Get Airport" (click)="getAirport(chosenAirport, mySite)" />
 <div *ngIf="airports">
-  <h3>{{airports.airportId}}</h3>
-  <h3> {{airports.iataCode}}</h3>
-  <h3>{{airports.name}}</h3>
-  <h3>{{airports.address}}</h3>
-  <h3>{{airports.city}}</h3>
-  <h3>{{airports.state}}</h3>
-  <h3>{{airports.postalCode}}</h3>
-  <h3> {{airports.country}}</h3>
-  <h3>{{airports.items}}</h3>
 
 
-  <h3>{{airports.airportId}}</h3>
-  <h3> {{airports.iataCode}}</h3>
-  <h3>{{airports.name}}</h3>
-  <h3>{{airports.address}}</h3>
-  <h3>{{airports.city}}</h3>
-  <h3>{{airports.state}}</h3>
-  <h3>{{airports.postalCode}}</h3>
-  <h3> {{airports.country}}</h3>
-  <h3>{{airports.items}}</h3>
+
+      <h3>{{mySite}}</h3>
+      <h3>{{airports.airportId}}</h3>
+      <h3>{{airports.iataCode}}</h3>
+      <h3>{{airports.name}}</h3>
+      <h3>{{airports.address}}</h3>
+      <h3>{{airports.city}}</h3>
+      <h3>{{airports.state}}</h3>
+      <h3>{{airports.items[0].itemId}}</h3>
+      </div>
+
+
+
+
+
+
+
+      <!--<h3>{{airports.itemId}}</h3>
+      <h3>{{airports.airportId}}</h3>
+      <h3>{{airports.type}}</h3>
+      <h3>{{airports.name}}</h3>
+      <h3>{{airports.phone?}}</h3>
+      <h3>{{airports.address}}</h3>
+      <h3>{{airports.description}}</h3>-->
+
+
+
+
 
 </div>
