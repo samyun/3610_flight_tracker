@@ -14,10 +14,11 @@ var http_1 = require("@angular/http");
 var AirportComponent = (function () {
     function AirportComponent(http) {
         this.http = http;
+        this.mySite = 'food';
     }
-    AirportComponent.prototype.getAirport = function (chosenAirport) {
+    AirportComponent.prototype.getAirport = function (chosenAirport, mySite) {
         var _this = this;
-        this.http.get('/api/airports/' + chosenAirport).subscribe(function (result) {
+        this.http.get('/api/airports/' + chosenAirport + '/' + mySite).subscribe(function (result) {
             _this.airports = result.json();
         });
     };

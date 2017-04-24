@@ -10,21 +10,23 @@ import {FormControl, FormGroup} from '@angular/forms';
   templateUrl: 'airport.component.html'
 })
 export class AirportComponent  {
- 
-  public airports: Airport;
+ mySite: string='food';
+  public airports: Airport.RootObject;
       constructor(private http: Http) {
     }
  
     public getAirport(chosenAirport: string, mySite: string) {
-        this.http.get('/api/airports/' + chosenAirport + '/' + mySite).subscribe(result => {
+        this.http.get('/api/airports/' + chosenAirport + '/' + mySite ).subscribe(result => {
             this.airports = result.json();
         });
     }
+    
 }
 
 
+declare module Airport  {
 
-   interface Item {
+    export interface Item  {
         itemId: string;
         airportID: string;
         type: string;
@@ -33,7 +35,8 @@ export class AirportComponent  {
         address: string;
         description: string;
     }
-interface Airport {
+
+    export interface RootObject  {
         airportId: string;
         iataCode: string;
         name: string;
@@ -45,5 +48,5 @@ interface Airport {
         items: Item[];
     }
 
-
+}
 
