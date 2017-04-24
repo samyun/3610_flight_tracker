@@ -14,30 +14,9 @@
 <div *ngIf="airports">
 
       <h1>{{airports.items[0]['itemId']}} </h1>
-
-      <h1>{{keys}} </h1>
-      <div *ngFor="let key of keys">
-            <div>
-                 <h1> {{airports.items[0][key]}} </h1>
-            </div>
-      </div>
-
-
-
-
-
-
-
-
-
-      <!--<h3>{{airports.itemId}}</h3>
-      <h3>{{airports.airportId}}</h3>
-      <h3>{{airports.type}}</h3>
-      <h3>{{airports.name}}</h3>
-      <h3>{{airports.phone?}}</h3>
-      <h3>{{airports.address}}</h3>
-      <h3>{{airports.description}}</h3>-->
-
+      <h1>{{airports.items[0]['name']}} </h1>
+      <h1>{{airports.items[0]['address']}} </h1>
+      <h1>{{airports.items[0]['description']}} </h1>
 
 
 

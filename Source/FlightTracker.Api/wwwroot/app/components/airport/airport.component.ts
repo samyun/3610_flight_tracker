@@ -38,7 +38,7 @@ declare module Airport {
         airportID: string;
         type: string;
         name: string;
-        phone?: any;
+        phone: string;
         address: string;
         description: string;
     }
