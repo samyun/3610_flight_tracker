@@ -34,13 +34,13 @@ namespace FlightTracker.Controllers
             }
         }
         // GET
-        [HttpGet("{itemid}/")]
+        [HttpGet("item/{itemid}/")]
         public IActionResult SingleItem(string itemid)
         {
             List<Item> items = db.Items.Where(i => i.ItemId.Equals(itemid)).ToList();
             if (!items.Any())
             {
-                return BadRequest($"No matching food items found.");
+                return BadRequest($"No matching items found.");
             }
             else if (items.Count != 1)
             {

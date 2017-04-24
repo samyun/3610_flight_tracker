@@ -26,8 +26,15 @@ namespace FlightTracker.Controllers
             using (var client = new HttpClient())
             {
                 DateTime date = new DateTime(year, month, day);
-                List<Flight> matchedFlights = db.Flights.AsEnumerable()
-                        .Where(a => a.Carrier.Equals(carrier) && a.ScheduledDepartureDate.Date == date.Date && a.DepartureAirport.Equals(departure_airport.ToUpper())).ToList();
+                List<Flight> matchedFlights = db.Flights.ToList();
+                try
+                {
+                    matchedFlights = matchedFlights.Where(a => a.Carrier.Equals(carrier.ToUpper()) && a.ScheduledDepartureDate.Date == date.Date && a.DepartureAirport.AirportId.Equals(departure_airport.ToUpper())).ToList();
+                }
+                catch (Exception)
+                {
+                    matchedFlights = new List<Flight>();
+                }
                 
                 if (!matchedFlights.Any() || matchedFlights.All(updated => updated.LastUpdated.CompareTo(DateTime.Now.AddSeconds(-30)) <= 0))
                 {
@@ -89,7 +96,7 @@ namespace FlightTracker.Controllers
             {
                 DateTime date = new DateTime(year, month, day);
                 IEnumerable<Flight> matchedFlights = db.Flights.AsEnumerable()
-                        .Where(a => a.Carrier.Equals(carrier) && a.ScheduledDepartureDate.Date == date.Date).AsEnumerable();
+                        .Where(a => a.Carrier.Equals(carrier.ToUpper()) && a.ScheduledDepartureDate.Date == date.Date).AsEnumerable();
                 
                 if (!matchedFlights.Any() || matchedFlights.All(updated => updated.LastUpdated.CompareTo(DateTime.Now.AddSeconds(-30)) <= 0))
                 {
