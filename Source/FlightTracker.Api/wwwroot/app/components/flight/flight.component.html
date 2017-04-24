@@ -27,21 +27,27 @@
 />
 <div *ngIf="flights">
   <h1> This will display if ngIf is true and flights is populated </h1>
-  <h2> {{flights.FlightId}} </h2>
-  <h2> {{flights.lastUpdated }} </h2>
-  <h2> {{flights.carrier }} </h2>
-  <h2> {{flights.flightNumber }} </h2>
-  <h2> {{flights.scheduledDepartureDate }} </h2>
-  <h2> {{flights.estimatedDepartureDate }} </h2>
-  <h2> {{flights.departureAirport.airportId }} </h2>
-  <h2> {{flights.departureAirport.iataCode }} </h2>
-  <h2> {{flights.departureAirport.name }} </h2>
-  <h2> {{flights.departureAirport.address }} </h2>
-  <h2> {{flights.departureAirport.city }} </h2>
-  <h2> {{flights.departureAirport.state }} </h2>
-  <h2> {{flights.departureAirport.postalCode }} </h2>
-  <h2> {{flights.departureAirport.country }} </h2>
-  <h2> {{flights.departureAirport.items }} </h2>
+  <h2> FlightStats.com Flight ID: {{flights.FlightId}} </h2>
+  <h2> Carrier: {{flights.carrier }} </h2>
+  <h2> Flight Number: {{flights.flightNumber }} </h2>
+  <h2> Scheduled Departure: {{flights.scheduledDepartureDate }} </h2>
+  <h2> Estimated Departure: {{flights.estimatedDepartureDate }} </h2>
+  <h2> Departing from: {{flights.departureAirport.airportId }} </h2>
+  <h3> {{flights.departureAirport.name }} </h3>
+  <h3> {{flights.departureAirport.address }} </h3>
+  <h3> {{flights.departureAirport.city }} </h3>
+  <h3> {{flights.departureAirport.state }} </h3>
+  <h3> {{flights.departureAirport.postalCode }} </h3>
+  <h3> {{flights.departureAirport.country }} </h3>
+  <h3> {{flights.departureAirport.items }} </h3>
+  <h2> Arriving at: {{flights.arrivalAirport.airportId }} </h2>
+  <h3> {{flights.arrivalAirport.name }} </h3>
+  <h3> {{flights.arrivalAirport.address }} </h3>
+  <h3> {{flights.arrivalAirport.city }} </h3>
+  <h3> {{flights.arrivalAirport.state }} </h3>
+  <h3> {{flights.arrivalAirport.postalCode }} </h3>
+  <h3> {{flights.arrivalAirport.country }} </h3>
+  <h3> {{flights.arrivalAirport.items }} </h3>
 
 
 

@@ -21,7 +21,7 @@ export class FlightComponent {
     
 
 
-       interface DepartureAirport {
+       interface Airport {
         airportId: string;
         iataCode: string;
         name: string;
@@ -40,7 +40,8 @@ export class FlightComponent {
         flightNumber: string;
         scheduledDepartureDate: Date;
         estimatedDepartureDate: Date;
-        departureAirport: DepartureAirport;
+        departureAirport: Airport;
+        arrivalAirport: Airport;
     }
 
 
