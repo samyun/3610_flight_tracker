@@ -13,16 +13,14 @@
 <input type="button" value="Get Airport" (click)="getAirport(chosenAirport, mySite)" />
 <div *ngIf="airports">
 
+      <h1>{{airports.items[0]['itemId']}} </h1>
 
-
-      <h3>{{mySite}}</h3>
-      <h3>{{airports.airportId}}</h3>
-      <h3>{{airports.iataCode}}</h3>
-      <h3>{{airports.name}}</h3>
-      <h3>{{airports.address}}</h3>
-      <h3>{{airports.city}}</h3>
-      <h3>{{airports.state}}</h3>
-      <h3>{{airports.items}}</h3>
+      <h1>{{keys}} </h1>
+      <div *ngFor="let key of keys">
+            <div>
+                 <h1> {{airports.items[0][key]}} </h1>
+            </div>
+      </div>
 
 
 
